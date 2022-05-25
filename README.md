@@ -10,4 +10,4 @@ This is the repository of Recycraft Capstone Project
 
 ## License
 
-Recycraft is using the Laravel framework where it is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Recycraft is using the Laravel framework where it is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
