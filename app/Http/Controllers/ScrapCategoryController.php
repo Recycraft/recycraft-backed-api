@@ -2,33 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ScrapCategoryResource;
 use App\Models\ScrapCategory;
 use Illuminate\Http\Request;
 
 class ScrapCategoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Return all of Scrap Category
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return ScrapCategoryResource::collection(ScrapCategory::all());
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Return all of Scrap Category with all the related handicrafts.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function withCraft()
     {
-        //
+        return ScrapCategoryResource::collection(ScrapCategory::with('handicrafts')->get());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Scrap Category.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response

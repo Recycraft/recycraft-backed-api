@@ -10,6 +10,12 @@ class ScrapCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name', 
+        'image',
+        'description',
+    ];
+
     public function handicrafts()
     {
         return $this->hasMany(Handicraft::class);
