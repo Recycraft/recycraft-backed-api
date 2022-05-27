@@ -9,5 +9,8 @@
 This is the repository of Recycraft Capstone Project
 
 ## License
+Recycraft uses several frameworks, including:
+1. Laravel framework for the back-end which is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2. AdminLTE for the admin front-end which is is an open source project by [AdminLTE.io](https://adminlte.io) that is licensed under [MIT](https://opensource.org/licenses/MIT).
 
-Recycraft is using the Laravel framework where it is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<!-- Color : #04DE7D -->
