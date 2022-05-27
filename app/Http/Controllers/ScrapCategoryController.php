@@ -13,7 +13,7 @@ class ScrapCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getAll()
     {
         return ScrapCategoryResource::collection(ScrapCategory::all());
     }
@@ -23,9 +23,30 @@ class ScrapCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function withCraft()
+    public function getAllWithCraft()
     {
         return ScrapCategoryResource::collection(ScrapCategory::with('handicrafts')->get());
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\ScrapCategory  $scrapCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function getById(ScrapCategory $scrapCategory)
+    {
+        return new ScrapCategoryResource($scrapCategory);
+    }
+
+    /**
+     * Return all of Scrap Category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
     /**

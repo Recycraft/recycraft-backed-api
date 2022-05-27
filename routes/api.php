@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HandicraftController;
+use App\Http\Controllers\ScrapCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +17,6 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-
-
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
     Route::post('/login', 'logIn');
     Route::post('/register', 'register');
@@ -26,5 +26,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/user/profile', 'getProfile');
         Route::post('/logout', 'logOut');
+    });
+
+    Route::controller(HandicraftController::class)->group(function () {
+        Route::get('/handicraft', 'getAll');
+        Route::get('/handicraft/{id}', 'getById');
+    });
+
+    Route::controller(ScrapCategoryController::class)->group(function () {
+        Route::get('/category', 'getAll');
+        Route::get('/category-with-handicrafts', 'getAllWithCrafts');
+        Route::get('/category/{id}', 'getById');
     });
 });
