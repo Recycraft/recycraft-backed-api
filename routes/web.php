@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +21,12 @@ Route::get('/', function () {
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
-    Route::get('/login', 'index');
+    Route::get('/login', 'index')->name('login');
     Route::post('/login', 'login');
-    Route::get('/register', 'registerIndex');
+    Route::get('/register', 'registerIndex')->name('register');
     Route::post('/register', 'register');
+});
+
+Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', 'index')->name('dashboard');
 });

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserLevel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
@@ -90,12 +92,42 @@ class AuthController extends Controller
  
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
- 
+
+            if ($request->user()->level == UserLevel::User){
+                return redirect()->intended('user.dashboard');
+            }
+            
             return redirect()->intended('dashboard');
         }
  
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'username' => 'required|unique:users',
+            'email' => 'required|email',
+            'password' => ['required', 'confirmed', Password::min(8)],
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'level' => UserLevel::User,
+            'password' => Hash::make($request->password),
+        ];
+
+        if (User::create($data)) {
+            return redirect()->route('login');
+        } else {
+            return back()->withErrors([
+                'msg' => 'Gagal Register'
+            ])->withInput($request->except(['password', 'password_confirmation']));
+        }
     }
 }
