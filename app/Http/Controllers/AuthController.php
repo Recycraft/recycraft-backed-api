@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function registerApi(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
@@ -33,7 +34,7 @@ class AuthController extends Controller
         ], 201);
     }
 
-    public function logIn(Request $request)
+    public function logInApi(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
@@ -51,7 +52,7 @@ class AuthController extends Controller
         return $user->createToken($request->device_name)->plainTextToken;
     }
 
-    public function logOut(Request $request)
+    public function logOutApi(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
 
@@ -64,5 +65,37 @@ class AuthController extends Controller
     public function getProfile(Request $request)
     {
         return $request->user();
+    }
+
+    public function index()
+    {
+        return view('login', [
+            'title' => 'Login',
+        ]);
+    }
+
+    public function registerIndex()
+    {
+        return view('register', [
+            'title' => 'Register',
+        ]);
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+ 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('dashboard');
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
     }
 }

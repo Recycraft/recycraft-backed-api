@@ -18,14 +18,14 @@ use App\Http\Controllers\ScrapCategoryController;
 */
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
-    Route::post('/login', 'logIn');
-    Route::post('/register', 'register');
+    Route::post('/login', 'logInApi');
+    Route::post('/register', 'registerApi');
 });
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::controller(AuthController::class)->group(function () {
         Route::get('/user/profile', 'getProfile');
-        Route::post('/logout', 'logOut');
+        Route::post('/logout', 'logOutApi');
     });
 
     Route::controller(HandicraftController::class)->group(function () {

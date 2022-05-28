@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(AuthController::class)->middleware('guest')->group(function () {
+    Route::get('/login', 'index');
+    Route::post('/login', 'login');
+    Route::get('/register', 'registerIndex');
+    Route::post('/register', 'register');
 });
