@@ -13,23 +13,23 @@ This is the repository of Recycraft Capstone Project
 1. Make sure you have all the prerequisites. 
 2. Clone this repository
 3. Copy the .env.example file in the same folder and rename it to .env 
-4. Set your database credentials in the .env file.
-  Before you set this up, make sure you have created database with the same name in your MySQL Engine.
-  Set all of this with your configuration.
-  `DB_DATABASE=recycraft_backend_api`
-  `DB_USERNAME=root`
-  `DB_PASSWORD=`
+4. Set your database credentials in the .env file.  
+  Before you set this up, make sure you have created database with the same name in your MySQL Engine.  
+  Set all of this with your configuration.  
+  `DB_DATABASE=recycraft_backend_api    
+   DB_USERNAME=root    
+   DB_PASSWORD=`
 
-5. Install the needed dependencies
-  Run this in your cmd inside the repository folder
+5. Install the needed dependencies  
+  Run this in your cmd inside the repository folder  
   `composer install`
-6. Generate new key for your application
-  Run this command
+6. Generate new key for your application  
+  Run this command  
   `php artisan key:generate`
-7. Run Migration and Seeder
+7. Run Migration and Seeder  
   `php artisan migrate:fresh --seed`
-8. Run your virtual environment
-  `php artisan serve`
+8. Run your virtual environment  
+  `php artisan serve`  
   After this you can access the application from http:/localhost:8000 and if you already finish, don't forget to close the virtual environment using ctrl+c or command+c.
 
 ## License
