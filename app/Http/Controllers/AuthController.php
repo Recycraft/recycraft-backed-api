@@ -94,10 +94,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if ($request->user()->level == UserLevel::User){
-                return redirect()->intended('user.dashboard');
+                return redirect()->route('user.dashboard');
             }
-            
-            return redirect()->intended('dashboard');
+
+            return redirect()->route('dashboard');
         }
  
         return back()->withErrors([
