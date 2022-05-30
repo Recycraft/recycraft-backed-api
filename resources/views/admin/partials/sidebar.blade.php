@@ -58,7 +58,7 @@
         </li>
         <li class="nav-item">
           <a href="" class="nav-link {{ request()->is('admin/feedback*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-recycle"></i>
+            <i class="nav-icon fas fa-comment-alt"></i>
             <p>
               Users Feedback
             </p>
