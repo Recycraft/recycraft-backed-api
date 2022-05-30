@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ScrapCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +32,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(
     Route::get('/dashboard', 'index')->name('dashboard');
     Route::get('/user/setting', 'setting')->name('admin.setting');
     Route::get('/dashboard/users', 'index')->name('users');
-    Route::get('/dashboard/scrap-categories', 'index')->name('scrap-categories');
+    Route::get('/dashboard/scrap-categories', [ScrapCategoryController::class, 'index'])->name('scrap-categories');
     Route::get('/dashboard/handicrafts', 'index')->name('handicrafts');
     Route::get('/dashboard/feedback', 'index')->name('feedback');
 });
