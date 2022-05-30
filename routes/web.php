@@ -29,4 +29,5 @@ Route::controller(AuthController::class)->middleware('guest')->group(function ()
 
 Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
+    Route::get('/user/setting', 'setting') ->name('admin.setting');
 });
