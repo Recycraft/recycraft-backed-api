@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('scrap_category_id')->constrained('scrap_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
-            $table->string('image');
-            $table->text('desc');
+            $table->string('image')->nullable();
+            $table->text('desc')->nullable();
             $table->text('materials');
-            $table->text('process');
+            $table->text('process')->nullable();
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision=0);
         });
