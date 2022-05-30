@@ -33,6 +33,14 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        User::create([
+            'name' => "Wahyu Adi",
+            'username' => 'wahyuadi',
+            'email' => 'testuser@gmail.com',
+            'level' => UserLevel::User,
+            'password' => Hash::make('12345678'),
+        ]);
+
         ScrapCategory::create([
             'name' => 'Plastic',
             'slug' => 'plastic',
