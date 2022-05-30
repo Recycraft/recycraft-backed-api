@@ -14,7 +14,7 @@ class Handicraft extends Model
         'scrap_category_id',
         'name',
         'image',
-        'description',
+        'desc',
     ];
 
     protected $with = ['category'];

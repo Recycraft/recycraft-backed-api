@@ -11,10 +11,10 @@ class ScrapCategory extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 
+        'name',
         'slug',
         'image',
-        'description',
+        'desc',
     ];
 
     public function handicrafts()
