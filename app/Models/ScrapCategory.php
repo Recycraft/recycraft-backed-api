@@ -15,6 +15,7 @@ class ScrapCategory extends Model
         'slug',
         'image',
         'desc',
+        'type'
     ];
 
     public function handicrafts()
