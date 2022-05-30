@@ -12,6 +12,7 @@ class ScrapCategory extends Model
 
     protected $fillable = [
         'name', 
+        'slug',
         'image',
         'description',
     ];

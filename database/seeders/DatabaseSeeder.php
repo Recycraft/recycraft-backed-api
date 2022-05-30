@@ -34,34 +34,64 @@ class DatabaseSeeder extends Seeder
         ]);
 
         ScrapCategory::create([
-            'name' => 'Plastic'
+            'name' => 'Plastic',
+            'slug' => 'plastic',
+            'image' => '',
+            'description' => 'blablabla'
         ]);
         ScrapCategory::create([
-            'name' => 'Paper'
+            'name' => 'Paper',
+            'slug' => 'paper',
+            'image' => '',
+            'description' => 'blablabla'
         ]);
         ScrapCategory::create([
-            'name' => 'Cardboard'
+            'name' => 'Cardboard',
+            'slug' => 'cardboard',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Styrofoam'
+            'name' => 'Styrofoam',
+            'slug' => 'styrofoam',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Bottle'
+            'name' => 'Plastic Bottle',
+            'slug' => 'bottle-plastic',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Can'
+            'name' => 'Can',
+            'slug' => 'can',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Spoon Plastic'
+            'name' => 'Plastic Spoon',
+            'slug' => 'spoon-plastic',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Stick'
+            'name' => 'Stick',
+            'slug' => 'stick',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Straw'
+            'name' => 'Straw',
+            'slug' => 'straw',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
         ScrapCategory::create([
-            'name' => 'Plastic Cup'
+            'name' => 'Plastic Cup',
+            'slug' => 'glass-plastic',
+            'image' => '',
+            'description' => 'bla bla bla'
         ]);
     }
 }
