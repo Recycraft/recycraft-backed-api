@@ -46,7 +46,7 @@ class ScrapCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.scraps', [
+        return view('admin.scraps.index', [
             'title' => 'Scrap Category',
             'scraps' => $this->getAll()
         ]);
