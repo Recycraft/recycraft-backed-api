@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('handicrafts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('scrap_category_id')->constrained('scrap_categories')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('name');
+            $table->string('title');
             $table->string('image');
-            $table->text('description');
+            $table->text('desc');
+            $table->text('materials');
+            $table->text('process');
             $table->timestamps();
             $table->softDeletes($column = 'deleted_at', $precision=0);
         });
