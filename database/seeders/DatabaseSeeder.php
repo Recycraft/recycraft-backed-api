@@ -101,5 +101,9 @@ class DatabaseSeeder extends Seeder
             'image' => '',
             'desc' => 'bla bla bla'
         ]);
+
+        $this->call([
+            HandicraftSeeder::class
+        ]);
     }
 }

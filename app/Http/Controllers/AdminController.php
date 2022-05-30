@@ -17,7 +17,7 @@ class AdminController extends Controller
             'classes_count' => ScrapCategory::all()->count(),
             'crafts_count' => Handicraft::all()->count(),
             'users_count' => User::all()->count(),
-            'rating' => UserFeedback::all()->sum('rating') / 5,
+            'rating' => UserFeedback::all()->count() > 0 ? round(UserFeedback::all()->sum('rating') / UserFeedback::all()->count(), 1) : 0,
         ]);
     }
 }
