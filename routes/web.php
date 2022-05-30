@@ -30,4 +30,8 @@ Route::controller(AuthController::class)->middleware('guest')->group(function ()
 Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
     Route::get('/user/setting', 'setting')->name('admin.setting');
+    Route::get('/dashboard/users', 'index')->name('users');
+    Route::get('/dashboard/scrap-categories', 'index')->name('scrap-categories');
+    Route::get('/dashboard/handicrafts', 'index')->name('handicrafts');
+    Route::get('/dashboard/feedback', 'index')->name('feedback');
 });

@@ -5,7 +5,6 @@
     <img src="dist/img/recycraft.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
     <span class="brand-text font-weight-bold">Recycraft</span>
   </a>
-
   <!-- Sidebar -->
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
@@ -21,47 +20,37 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <!-- Add icons to the links using the .nav-icon class
-             with font-awesome or any other icon font library -->
-        <li class="nav-header">PAGES</li>
         <li class="nav-item">
           <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
-            <p>
-              Dashboard
-            </p>
+            <p>Dashboard</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
+          <a href="{{ route('users') }}" class="nav-link {{ request()->is('dashboard/users*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
-            <p>
-              Users
-            </p>
+            <p>Users</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link {{ request()->is('admin/scrap-categories*') ? 'active' : '' }}">
+          <a href="{{ route('scrap-categories') }}"
+            class="nav-link {{ request()->is('dashboard/scrap-categories*') ? 'active' : '' }}">
             <i class="nav-icon far fa-list-alt"></i>
-            <p>
-              Scrap Category
-            </p>
+            <p>Scrap Category</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link {{ request()->is('admin/handicrafts*') ? 'active' : '' }}">
+          <a href="{{ route('handicrafts') }}"
+            class="nav-link {{ request()->is('dashboard/handicrafts*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-recycle"></i>
-            <p>
-              Handicraft
-            </p>
+            <p>Handicraft</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link {{ request()->is('admin/feedback*') ? 'active' : '' }}">
+          <a href="{{ route('feedback') }}"
+            class="nav-link {{ request()->is('dashboard/feedback*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-comment-alt"></i>
-            <p>
-              Users Feedback
-            </p>
+            <p>Users Feedback</p>
           </a>
         </li>
       </ul>
