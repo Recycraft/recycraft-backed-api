@@ -20,4 +20,8 @@ class AdminController extends Controller
             'rating' => UserFeedback::all()->count() > 0 ? round(UserFeedback::all()->sum('rating') / UserFeedback::all()->count(), 1) : 0,
         ]);
     }
+
+    public function setting() {
+            return "Ini halaman setting nantinya";
+    }
 }
