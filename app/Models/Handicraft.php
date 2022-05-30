@@ -12,9 +12,11 @@ class Handicraft extends Model
 
     protected $fillable = [
         'scrap_category_id',
-        'name',
+        'title',
         'image',
-        'description',
+        'desc',
+        'materials',
+        'process'
     ];
 
     protected $with = ['category'];
