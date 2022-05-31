@@ -30,17 +30,17 @@ Route::controller(AuthController::class)->middleware('guest')->group(function ()
 });
 
 Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/dashboard', 'index')->name('dashboard');
-    Route::get('/user/setting', 'setting')->name('admin.setting');
+    Route::get('/admin/dashboard', 'index')->name('admin.dashboard');
+    Route::get('/admin/setting', 'setting')->name('admin.setting');
 
     #Users
-    Route::get('/dashboard/users', 'index')->name('users');
+    Route::get('/admin/users', 'index')->name('admin.users');
 
     #Scraps Categories
-    Route::get('/dashboard/scrap-categories', [ScrapCategoryController::class, 'index'])->name('scrap-categories');
+    Route::get('/admin/scrap-categories', [ScrapCategoryController::class, 'index'])->name('admin.scrap-categories');
 
     #Handicrafts
-    Route::get('/dashboard/handicrafts', [HandicraftController::class, 'index'])->name('handicrafts');
+    Route::get('/admin/handicrafts', [HandicraftController::class, 'index'])->name('admin.handicrafts');
     // Route::post('/dashboard/handicrafts/{handicrafts:id}/edit', [HandicraftController::class, 'update']);
     // Route::delete('/dashboard/handicrafts', [HandicraftController::class, 'destroy']);
 

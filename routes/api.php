@@ -36,6 +36,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(ScrapCategoryController::class)->group(function () {
         Route::get('/category', 'getAll');
         Route::get('/category-with-handicrafts', 'getAllWithCrafts');
-        Route::get('/category/{id}', 'getById');
+        Route::get('/category/{slug}', 'getById');
     });
 });

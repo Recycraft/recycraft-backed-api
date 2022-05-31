@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -32,9 +32,7 @@
                 <tr>
                   <th style="width: 10px">#</th>
                   <th>Name</th>
-                  <th>Description</th>
-                  <th>Image</th>
-                  <th>Action</th>
+                  <th class="col-2 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -42,17 +40,17 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $scrap->name }}</td>
-                    <td>{{ $scrap->desc }}</td>
-                    <td><img src="{{ $scrap->image }}" alt="{{ $scrap->name }}"></td>
                     <td>
-                      <a href="/dashboard/scrap-categories/{{ $scrap->id }}/edit" class="badge bg-warning"><span
-                          data-feather="edit"></span>Edit</a>
-                      <form action="/dashboard/scrap-categories/{{ $scrap->id }}" method="post" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="badge bg-danger border-0" type="submit"
-                          onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span>Delete</button>
-                      </form>
+                      <div class="d-flex justify-content-around align-items-center">
+                        <a href="/admin/products/{{ $scrap->slug }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
+                        <a href="/dashboard/scrap-categories/{{ $scrap->slug }}/edit" class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                        <form method="post" action="/dashboard/scrap-categories/{{ $scrap->slug }}">
+                            @csrf @method('delete')
+                            <button type="submit" class="btn bg-danger"
+                                onclick="return confirm('Apakah anda yakin untuk menghapusnya ?')"><i
+                                    class="fas fa-trash"></i></button>
+                        </form>
+                      </div>
                     </td>
                   </tr>
                 @endforeach

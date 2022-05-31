@@ -21,34 +21,34 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="{{ route('dashboard') }}" class="nav-link {{ request()->is('dashboard') ? 'active' : '' }}">
+          <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('users') }}" class="nav-link {{ request()->is('dashboard/users*') ? 'active' : '' }}">
+          <a href="{{ route('admin.users') }}" class="nav-link {{ request()->is('admin/users*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
             <p>Users</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('scrap-categories') }}"
-            class="nav-link {{ request()->is('dashboard/scrap-categories*') ? 'active' : '' }}">
+          <a href="{{ route('admin.scrap-categories') }}"
+            class="nav-link {{ request()->is('admin/scrap-categories*') ? 'active' : '' }}">
             <i class="nav-icon far fa-list-alt"></i>
             <p>Scrap Category</p>
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('handicrafts') }}"
-            class="nav-link {{ request()->is('dashboard/handicrafts*') ? 'active' : '' }}">
+          <a href="{{ route('admin.handicrafts') }}"
+            class="nav-link {{ request()->is('admin/handicrafts*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-recycle"></i>
             <p>Handicraft</p>
           </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('feedback') }}"
-            class="nav-link {{ request()->is('dashboard/feedback*') ? 'active' : '' }}">
+            class="nav-link {{ request()->is('admin/feedback*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-comment-alt"></i>
             <p>Users Feedback</p>
           </a>
