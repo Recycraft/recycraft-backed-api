@@ -32,11 +32,11 @@
                 <tr>
                   <th style="width: 10px">#</th>
                   <th>Title</th>
-                  <th>Description</th>
+                  {{-- <th>Description</th> --}}
                   <th>Category</th>
                   {{-- <th>Materials</th>
                   <th>Process</th> --}}
-                  <th>Image</th>
+                  {{-- <th>Image</th> --}}
                   <th>Action</th>
                 </tr>
               </thead>
@@ -45,9 +45,9 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $handicraft->title }}</td>
-                    <td>{{ $handicraft->desc }}</td>
-                    <td>Ini Category</td>
-                    <td><img src="{{ $handicraft->image }}" alt="{{ $handicraft->name }}"></td>
+                    {{-- <td>{{ $handicraft->desc }}</td> --}}
+                    <td>Ini Kategori nanti</td>
+                    {{-- <td><img src="{{ $handicraft->image }}" alt="{{ $handicraft->name }}"></td> --}}
                     <td>
                       <a href="/dashboard/handicrafts/{{ $handicraft->id }}/show" class="badge bg-info"><span
                           data-feather="edit"></span>Show</a>
