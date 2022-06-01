@@ -48,7 +48,20 @@ class ScrapCategoryController extends Controller
     {
         return view('admin.scraps.index', [
             'title' => 'Scrap Category',
-            'scraps' => $this->getAll()
+            'scraps' => ScrapCategory::all(),
+        ]);
+    }
+
+    /**
+     * Show the form for creating new category.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.scraps.create', [
+            'title' => 'Add Scrap Category',
         ]);
     }
 
@@ -69,9 +82,13 @@ class ScrapCategoryController extends Controller
      * @param  \App\Models\ScrapCategory  $scrapCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ScrapCategory $scrapCategory)
+    public function show(ScrapCategory $scrapCategory, $slug)
     {
-        //
+        $scrap = $scrapCategory::where('slug', $slug)->get()->first();
+        return view('admin.scraps.show', [
+            'title' => 'Detail',
+            'scrap' => $scrap,
+        ]);
     }
 
     /**

@@ -28,8 +28,4 @@ class ScrapCategory extends Model
         return $this->hasMany(Handicraft::class);
     }
 
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 }

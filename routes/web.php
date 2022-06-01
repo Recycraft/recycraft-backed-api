@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HandicraftController;
 use App\Http\Controllers\ScrapCategoryController;
+use App\Http\Resources\ScrapCategoryResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,21 +30,28 @@ Route::controller(AuthController::class)->middleware('guest')->group(function ()
     Route::post('/register', 'register');
 });
 
-Route::controller(AdminController::class)->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin/dashboard', 'index')->name('admin.dashboard');
-    Route::get('/admin/setting', 'setting')->name('admin.setting');
-
-    #Users
-    Route::get('/admin/users', 'index')->name('admin.users');
-
+Route::middleware(['admin', 'auth'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin/dashboard', 'index')->name('dashboard');
+        Route::get('/admin/setting', 'setting')->name('setting');
+    
+        #Users
+        Route::get('/admin/users', 'index')->name('users');
+    
+    });
     #Scraps Categories
-    Route::get('/admin/scrap-categories', [ScrapCategoryController::class, 'index'])->name('admin.scrap-categories');
+    Route::controller(ScrapCategoryController::class)->group(function () {
+        Route::get('/admin/scrap', 'index')->name('scrap.index');
+        Route::get('/admin/scrap/{slug}', 'show')->name('scrap.show');
+        Route::get('/admin/scrap/create', 'create')->name('scrap.create');
+        Route::get('/admin/scrap/{slug}/edit', 'edit')->name('scrap.edit');
+        Route::delete('/admin/scrap/{slug}', 'destroy')->name('scrap.destroy');
+    });
+    
 
     #Handicrafts
-    Route::get('/admin/handicrafts', [HandicraftController::class, 'index'])->name('admin.handicrafts');
+    Route::get('/admin/handicrafts', [HandicraftController::class, 'index'])->name('handicrafts');
     // Route::post('/dashboard/handicrafts/{handicrafts:id}/edit', [HandicraftController::class, 'update']);
     // Route::delete('/dashboard/handicrafts', [HandicraftController::class, 'destroy']);
-
-    #User Feedback
-    Route::get('/dashboard/feedback', 'index')->name('feedback');
 });
+
