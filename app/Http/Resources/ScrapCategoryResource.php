@@ -20,7 +20,7 @@ class ScrapCategoryResource extends JsonResource
             'slug' => $this->slug,
             'type' => $this->type,
             'image' => $this->image,
-            'desc' => $this->description,
+            'desc' => $this->desc,
             'handicrafts' => HandicraftResource::collection($this->whenLoaded('posts'))
         ];
     }
