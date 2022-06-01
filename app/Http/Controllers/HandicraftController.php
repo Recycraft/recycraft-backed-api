@@ -6,6 +6,7 @@ use App\Models\Handicraft;
 use Illuminate\Http\Request;
 use App\Http\Resources\HandicraftResource;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+# composer require cviebrock/eloquent-sluggable
 
 class HandicraftController extends Controller
 {
@@ -71,12 +72,11 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function show(Handicraft $handiCraft, $slug)
+    public function show(Handicraft $handiCraft)
     {
-        $handicraft = $handiCraft::where('slug', $slug)->get()->first();
         return view('admin.handicrafts.show', [
             'title' => 'Detail',
-            'handicraft' => $handicraft,
+            'handicraft' => $handiCraft,
         ]);
     }
 
@@ -111,7 +111,8 @@ class HandicraftController extends Controller
      */
     public function destroy(Handicraft $handiCraft)
     {
-        //
+        $handiCraft->delete();
+        return redirect()->route('handicraft.index')->with('success', 'Handicraft has been deleted successfully!');
     }
 
     public function checkSlug(Request $request) {

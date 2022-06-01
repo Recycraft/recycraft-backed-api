@@ -170,7 +170,8 @@ class ScrapCategoryController extends Controller
      */
     public function destroy(ScrapCategory $scrapCategory)
     {
-        //
+        $scrapCategory->delete();
+        return redirect()->route('scrap.index')->with('success', 'Scrap has been deleted successfully!');
     }
 
     public function checkSlug(Request $request) {

@@ -45,8 +45,7 @@
           <div class="form-group">
             <label for="inputDescription">Category Description</label>
             <textarea id="summernote" name="desc">
-              {{ old('desc', 'Description') }}
-            </textarea>
+              {{ old('desc', 'Description') }}</textarea>
           </div>
           @error('desc')
             <div class="error invalid-feedback">
