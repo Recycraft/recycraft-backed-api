@@ -19,6 +19,7 @@ class HandicraftSeeder extends Seeder
         Handicraft::create([
             'scrap_category_id' => 1,
             'title' => "Lampu Hias dari Botol Bekas",
+            'slug' => "lampu-hias-dari-botol-bekas",
             'image' => "",
             'desc' => "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
             'materials' => "Botol bekas, Cutter atau gunting, Baterai, Kawat, Set lampu LED, Tang, Kardus Lem",

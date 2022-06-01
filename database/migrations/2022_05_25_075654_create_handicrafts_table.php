@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('scrap_category_id')->constrained('scrap_categories')->onUpdate('cascade')->onDelete('cascade');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->string('image')->nullable();
             $table->text('desc')->nullable();
             $table->text('materials');
