@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Handicraft extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, Sluggable;
 
     protected $fillable = [
         'scrap_category_id',
@@ -24,6 +25,15 @@ class Handicraft extends Model
     public function category()
     {
         return $this->belongsTo(ScrapCategory::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 
 }
