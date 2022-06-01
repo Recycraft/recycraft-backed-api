@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ScrapType;
 use App\Http\Resources\ScrapCategoryResource;
 use App\Models\ScrapCategory;
 use Illuminate\Http\Request;
@@ -62,6 +63,7 @@ class ScrapCategoryController extends Controller
     {
         return view('admin.scraps.create', [
             'title' => 'Add Scrap Category',
+            'scrapType' => ScrapType::cases(),
         ]);
     }
 
@@ -82,12 +84,11 @@ class ScrapCategoryController extends Controller
      * @param  \App\Models\ScrapCategory  $scrapCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(ScrapCategory $scrapCategory, $slug)
+    public function show(ScrapCategory $scrapCategory)
     {
-        $scrap = $scrapCategory::where('slug', $slug)->get()->first();
         return view('admin.scraps.show', [
             'title' => 'Detail',
-            'scrap' => $scrap,
+            'scrap' => $scrapCategory,
         ]);
     }
 
@@ -99,7 +100,11 @@ class ScrapCategoryController extends Controller
      */
     public function edit(ScrapCategory $scrapCategory)
     {
-        //
+        return view('admin.scraps.edit', [
+            'title' => 'Edit',
+            'scrap' => $scrapCategory,
+            'scrapType' => ScrapType::cases(),
+        ]);
     }
 
     /**

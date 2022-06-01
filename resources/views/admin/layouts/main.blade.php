@@ -61,6 +61,8 @@
   <script src="{{ asset('plugins/raphael/raphael.min.js') }}"></script>
   <script src="{{ asset('plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
   <script src="{{ asset('plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
+  <!-- bs-custom-file-input -->
+  <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
   <!-- Summernote -->
   <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
   <!-- Page specific script -->
@@ -68,6 +70,22 @@
     $(function() {
       // Summernote
       $('#summernote').summernote()
+    })
+    $(function () {
+      bsCustomFileInput.init();
+    });
+    const images = document.querySelectorAll("input[type=file]")
+    images.forEach((img, i) => {
+      img.onchange = (e) => {
+          const imgPreview = document.querySelectorAll(".img-preview")[i]
+          const labels = document.querySelectorAll(".custom-file-label")[i]
+          labels.innerText = e.target.files[0].name
+          const fileReader = new FileReader()
+          fileReader.readAsDataURL(e.target.files[0])
+          fileReader.onload = (oFREvent) => {
+          imgPreview.src = oFREvent.target.result
+          }
+      }
     })
   </script>
 </body>

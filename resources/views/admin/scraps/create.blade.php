@@ -23,40 +23,39 @@
     <!-- Main content -->
     <section class="content">
       <div class="card card-dark">
-        <div class="card-header">
-          <h3 class="card-title">General</h3>
-
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-              <i class="fas fa-minus"></i>
-            </button>
-          </div>
-        </div>
         <div class="card-body">
           <div class="form-group">
-            <label for="inputName">Project Name</label>
-            <input type="text" id="inputName" class="form-control">
+            <label for="name">Category Name</label>
+            <input type="text" id="name" name="name" class="form-control">
           </div>
           <div class="form-group">
-            <label for="inputDescription">Project Description</label>
-            <textarea id="inputDescription" class="form-control" rows="4"></textarea>
+            <label for="slug">Slug</label>
+            <input type="text" id="slug" name="slug" class="form-control">
           </div>
           <div class="form-group">
-            <label for="inputStatus">Status</label>
-            <select id="inputStatus" class="form-control custom-select">
-              <option selected disabled>Select one</option>
-              <option>On Hold</option>
-              <option>Canceled</option>
-              <option>Success</option>
+            <label for="inputDescription">Category Description</label>
+            <textarea id="summernote">
+              Description
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">Picture</label>
+            <div class="input-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="image" id="image">
+                <label class="custom-file-label" for="image">Choose file</label>
+              </div>
+            </div>
+            <img src="" alt="" class="img-preview img-fluid mt-1 col-6 col-sm-4 col-lg-2">
+          </div>
+          <div class="form-group">
+            <label for="inputStatus">Type</label>
+            <select id="inputStatus" name="type" class="form-control custom-select">
+              <option selected>Select one</option>
+              @foreach ($scrapType as $type)
+                <option value="{{ $type->value }}">{{ $type->name }}</option>
+              @endforeach
             </select>
-          </div>
-          <div class="form-group">
-            <label for="inputClientCompany">Client Company</label>
-            <input type="text" id="inputClientCompany" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="inputProjectLeader">Project Leader</label>
-            <input type="text" id="inputProjectLeader" class="form-control">
           </div>
         </div>
         <!-- /.card-body -->

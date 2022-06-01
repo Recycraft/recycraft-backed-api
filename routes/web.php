@@ -42,10 +42,10 @@ Route::middleware(['admin', 'auth'])->group(function () {
     #Scraps Categories
     Route::controller(ScrapCategoryController::class)->group(function () {
         Route::get('/admin/scrap', 'index')->name('scrap.index');
-        Route::get('/admin/scrap/{slug}', 'show')->name('scrap.show');
         Route::get('/admin/scrap/create', 'create')->name('scrap.create');
-        Route::get('/admin/scrap/{slug}/edit', 'edit')->name('scrap.edit');
-        Route::delete('/admin/scrap/{slug}', 'destroy')->name('scrap.destroy');
+        Route::get('/admin/scrap/{scrapCategory:slug}', 'show')->name('scrap.show');
+        Route::get('/admin/scrap/{scrapCategory:slug}/edit', 'edit')->name('scrap.edit');
+        Route::delete('/admin/scrap/{scrapCategory:slug}', 'destroy')->name('scrap.destroy');
     });
     
 
