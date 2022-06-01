@@ -75,7 +75,49 @@ class ScrapCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required|unique:scrap_categories',
+            'desc' => 'required',
+            'type' => 'required',
+            'image' => 'required|image'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'type' => $request->type,
+        ];
+
+        $path_image = $request->file('image')->store('images/scrap-categories/');
+        $data['image'] = $path_image;
+
+        $desc = $request->desc;
+        $dom = new \DomDocument();
+        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
+
+        foreach($imageFile as $item => $image){
+            $data = $image->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $imgeData = base64_decode($data);
+            $image_name= "/upload/" . time().$item.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+        }
+
+        $desc = $dom->saveHTML();
+        $data['desc'] = $desc;
+
+        if (ScrapCategory::create($data)){
+            return redirect()->route('scrap.index')->with('success', 'Upload berhasil');
+        } else {
+            return back()->withInput()->withErrors('Cannot Store in Database');
+        }
     }
 
     /**

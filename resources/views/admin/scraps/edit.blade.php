@@ -28,6 +28,11 @@
             <label for="name">Category Name</label>
             <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $scrap->name) }}">
           </div>
+          @error('name')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
           <div class="form-group">
             <label for="slug">Slug</label>
             <input type="text" id="slug" name="slug" class="form-control" value="{{ $scrap->slug }}" disabled>
@@ -38,6 +43,11 @@
               {{ $scrap->desc }}
             </textarea>
           </div>
+          @error('desc')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
           <div class="form-group">
             <label for="image">Picture</label>
             <div class="input-group">
@@ -52,6 +62,11 @@
                 <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
             @endif
             <img src="" alt="" class="img-preview img-fluid mt-1 col-6 col-sm-4 col-lg-2">
+            @error('image')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
           </div>
           <div class="form-group">
             <label for="inputStatus">Type</label>
@@ -62,6 +77,11 @@
               @endforeach
             </select>
           </div>
+          @error('type')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
         </div>
         <!-- /.card-body -->
       </div>
