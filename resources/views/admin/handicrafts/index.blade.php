@@ -37,6 +37,7 @@
                 <tr>
                   <th style="width: 10px">#</th>
                   <th>Name</th>
+                  <th>Category</th>
                   <th class="col-lg-3 col-sm-4 text-center">Action</th>
                 </tr>
               </thead>
@@ -44,14 +45,15 @@
                 @foreach ($handicrafts as $handicraft)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $handicraft->name }}</td>
+                    <td>{{ $handicraft->title }}</td>
+                    <td>Ini category</td>
                     <td>
                       <div class="d-flex justify-content-around align-items-center">
-                        <a href="{{ route('handicraft.show', ['slug' => $handicraft->id]) }}" class="btn bg-info"><i
-                            class="fas fa-info-circle"></i></a>
-                        <a href="{{ route('handicraft.edit', ['slug' => $handicraft->id]) }}" class="btn bg-warning"><i
-                            class="fas fa-edit"></i></a>
-                        <form method="post" action="{{ route('handicraft.destroy', ['slug' => $handicraft->id]) }}">
+                        <a href="{{ route('handicraft.show', ['slug' => $handicraft->slug]) }}"
+                          class="btn bg-info"><i class="fas fa-info-circle"></i></a>
+                        <a href="{{ route('handicraft.edit', ['slug' => $handicraft->slug]) }}"
+                          class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                        <form method="post" action="{{ route('handicraft.destroy', ['slug' => $handicraft->slug]) }}">
                           @csrf @method('delete')
                           <button type="submit" class="btn bg-danger" onclick="return confirm('Are you sure?')"><i
                               class="fas fa-trash"></i></button>

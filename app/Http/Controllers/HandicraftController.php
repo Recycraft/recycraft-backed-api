@@ -59,9 +59,9 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function show(Handicraft $handicraft, $id)
+    public function show(Handicraft $handicraft, $slug)
     {
-        $handicraft = $handicraft::where('id', $id)->get()->first();
+        $handicraft = $handicraft::where('slug', $slug)->get()->first();
         return view('admin.handicrafts.show', [
             'title' => 'Detail',
             'handicraft' => $handicraft,
