@@ -47,13 +47,14 @@
                     <td>{{ $scrap->name }}</td>
                     <td>
                       <div class="d-flex justify-content-around align-items-center">
-                        <a href="{{ route('scrap.show', ['slug' => $scrap->slug]) }}" class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                        <a href="{{ route('scrap.edit', ['slug' => $scrap->slug]) }}" class="btn bg-warning"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('scrap.show', ['slug' => $scrap->slug]) }}" class="btn bg-info"><i
+                            class="fas fa-info-circle"></i></a>
+                        <a href="{{ route('scrap.edit', ['slug' => $scrap->slug]) }}" class="btn bg-warning"><i
+                            class="fas fa-edit"></i></a>
                         <form method="post" action="{{ route('scrap.destroy', ['slug' => $scrap->slug]) }}">
-                            @csrf @method('delete')
-                            <button type="submit" class="btn bg-danger"
-                                onclick="return confirm('Are you sure?')"><i
-                                    class="fas fa-trash"></i></button>
+                          @csrf @method('delete')
+                          <button type="submit" class="btn bg-danger" onclick="return confirm('Are you sure?')"><i
+                              class="fas fa-trash"></i></button>
                         </form>
                       </div>
                     </td>

@@ -62,9 +62,9 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-    <!--/. container-fluid -->
+      <!--/. container-fluid -->
     </section>
-  <!-- /.content -->
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 @endsection

@@ -38,7 +38,7 @@ class HandicraftController extends Controller
     {
         return view('admin.handicrafts.index', [
             'title' => 'Handicrafts',
-            'handicrafts' => $this->getAll()
+            'handicrafts' => Handicraft::all()
         ]);
     }
 
@@ -59,9 +59,13 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function show(Handicraft $handicraft)
+    public function show(Handicraft $handicraft, $id)
     {
-        //
+        $handicraft = $handicraft::where('id', $id)->get()->first();
+        return view('admin.handicrafts.show', [
+            'title' => 'Detail',
+            'handicraft' => $handicraft,
+        ]);
     }
 
     /**

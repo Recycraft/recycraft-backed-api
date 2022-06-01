@@ -25,51 +25,46 @@
       <div class="container-fluid">
         <!-- /.row -->
         <div class="card">
-          {{-- <div class="card-header"></div> --}}
+          <div class="card-header">
+            <h3 class="card-title">Handicrafts</h3>
+            <div class="card-tools">
+              <a href="{{ route('handicraft.create') }}" class="btn bg-teal">Add new</a>
+            </div>
+          </div>
           <div class="card-body p-0">
             <table class="table table-striped">
               <thead>
                 <tr>
                   <th style="width: 10px">#</th>
-                  <th>Title</th>
-                  {{-- <th>Description</th> --}}
-                  <th>Category</th>
-                  {{-- <th>Materials</th>
-                  <th>Process</th> --}}
-                  {{-- <th>Image</th> --}}
-                  <th>Action</th>
+                  <th>Name</th>
+                  <th class="col-lg-3 col-sm-4 text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach ($handicrafts as $handicraft)
                   <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $handicraft->title }}</td>
-                    {{-- <td>{{ $handicraft->desc }}</td> --}}
-                    <td>Ini Kategori nanti</td>
-                    {{-- <td><img src="{{ $handicraft->image }}" alt="{{ $handicraft->name }}"></td> --}}
+                    <td>{{ $handicraft->name }}</td>
                     <td>
-                      <a href="/dashboard/handicrafts/{{ $handicraft->id }}/show" class="badge bg-info"><span
-                          data-feather="edit"></span>Show</a>
-                      <a href="/dashboard/handicrafts/{{ $handicraft->id }}/edit" class="badge bg-warning"><span
-                          data-feather="edit"></span>Edit</a>
-                      <form action="/dashboard/handicrafts/{{ $handicraft->id }}" method="post" class="d-inline">
-                        @method('delete')
-                        @csrf
-                        <button class="badge bg-danger border-0" type="submit"
-                          onclick="return confirm('Are you sure?')"><span data-feather="x-circle"></span>Delete</button>
-                      </form>
+                      <div class="d-flex justify-content-around align-items-center">
+                        <a href="{{ route('handicraft.show', ['slug' => $handicraft->id]) }}" class="btn bg-info"><i
+                            class="fas fa-info-circle"></i></a>
+                        <a href="{{ route('handicraft.edit', ['slug' => $handicraft->id]) }}" class="btn bg-warning"><i
+                            class="fas fa-edit"></i></a>
+                        <form method="post" action="{{ route('handicraft.destroy', ['slug' => $handicraft->id]) }}">
+                          @csrf @method('delete')
+                          <button type="submit" class="btn bg-danger" onclick="return confirm('Are you sure?')"><i
+                              class="fas fa-trash"></i></button>
+                        </form>
+                      </div>
                     </td>
                   </tr>
                 @endforeach
               </tbody>
             </table>
           </div>
-
         </div>
-
       </div>
-
   </div>
   <!--/. container-fluid -->
   </section>
