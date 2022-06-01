@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ScrapType;
-use App\Http\Resources\ScrapCategoryResource;
-use App\Models\ScrapCategory;
 use Illuminate\Http\Request;
+use App\Models\ScrapCategory;
+use App\Http\Resources\ScrapCategoryResource;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ScrapCategoryController extends Controller
 {
@@ -170,5 +171,10 @@ class ScrapCategoryController extends Controller
     public function destroy(ScrapCategory $scrapCategory)
     {
         //
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(ScrapCategory::class, 'slug', $request->category);
+        return response()->json(['slug' => $slug]);
     }
 }

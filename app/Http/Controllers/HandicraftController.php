@@ -24,9 +24,9 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function getById(Handicraft $handicraft)
+    public function getById(Handicraft $handiCraft)
     {
-        return new HandicraftResource($handicraft);
+        return new HandicraftResource($handiCraft);
     }
 
     /**
@@ -59,9 +59,9 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function show(Handicraft $handicraft, $slug)
+    public function show(Handicraft $handiCraft, $slug)
     {
-        $handicraft = $handicraft::where('slug', $slug)->get()->first();
+        $handicraft = $handiCraft::where('slug', $slug)->get()->first();
         return view('admin.handicrafts.show', [
             'title' => 'Detail',
             'handicraft' => $handicraft,
@@ -74,7 +74,7 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function edit(Handicraft $handicraft)
+    public function edit(Handicraft $handiCraft)
     {
         //
     }
@@ -86,7 +86,7 @@ class HandicraftController extends Controller
      * @param  \App\Models\ScrapCategory  $scrapCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Handicraft $handicraft)
+    public function update(Request $request, Handicraft $handiCraft)
     {
         //
     }
@@ -97,7 +97,7 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Handicraft $handicraft)
+    public function destroy(Handicraft $handiCraft)
     {
         //
     }

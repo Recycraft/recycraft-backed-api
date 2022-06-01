@@ -27,6 +27,11 @@ class Handicraft extends Model
         return $this->belongsTo(ScrapCategory::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function sluggable(): array
     {
         return [
