@@ -38,7 +38,7 @@ class ScrapCategory extends Model
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'name'
             ]
         ];
     }

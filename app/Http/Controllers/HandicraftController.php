@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Handicraft;
 use Illuminate\Http\Request;
 use App\Http\Resources\HandicraftResource;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class HandicraftController extends Controller
 {
@@ -41,7 +42,18 @@ class HandicraftController extends Controller
             'handicrafts' => Handicraft::all()
         ]);
     }
-
+        /**
+     * Show the form for creating new category.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.handicrafts.create', [
+            'title' => 'Add Handicrafts',
+        ]);
+    }
     /**
      * Store a newly created Handicraft.
      *
@@ -100,5 +112,10 @@ class HandicraftController extends Controller
     public function destroy(Handicraft $handiCraft)
     {
         //
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(Handicraft::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

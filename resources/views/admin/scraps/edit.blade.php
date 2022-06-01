@@ -57,21 +57,23 @@
               </div>
             </div>
             @if ($scrap->image)
-                <img src="{{ asset("storage/" . $scrap->image) }}" alt="" class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
+              <img src="{{ asset('storage/' . $scrap->image) }}" alt=""
+                class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
             @else
-                <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
+              <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
             @endif
             <img src="" alt="" class="img-preview img-fluid mt-1 col-6 col-sm-4 col-lg-2">
             @error('image')
-            <div class="error invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
+              <div class="error invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="inputStatus">Type</label>
             <select id="inputStatus" name="type" class="form-control custom-select">
-              <option selected {{ $scrap->type ? $scrap->type->value : '' }}>{{ $scrap->type ? $scrap->type->name : 'Select one' }}</option>
+              <option selected {{ $scrap->type ? $scrap->type->value : '' }}>
+                {{ $scrap->type ? $scrap->type->name : 'Select one' }}</option>
               @foreach ($scrapType as $type)
                 <option value="{{ $type->value }}">{{ $type->name }}</option>
               @endforeach
@@ -86,9 +88,18 @@
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
-    <!--/. container-fluid -->
+      <!--/. container-fluid -->
     </section>
-  <!-- /.content -->
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+    const name = document.querySelector('#name');
+    const slug = document.querySelector('#slug');
+    name.addEventListener('change', function() {
+      fetch('/admin/scrap/checkSlug?category=' + name.value)
+        .then(response => response.json())
+        .then(data => slug.value = data.slug)
+    });
+  </script>
 @endsection

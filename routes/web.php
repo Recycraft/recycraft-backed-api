@@ -55,6 +55,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::controller(HandicraftController::class)->group(function () {
         Route::get('/admin/handicraft', 'index')->name('handicraft.index');
         Route::get('/admin/handicraft/create', 'create')->name('handicraft.create');
+        Route::get('/admin/handicraft/checkSlug',  'checkSlug');
         Route::get('/admin/handicraft/{handiCraft:slug}', 'show')->name('handicraft.show');
         Route::get('/admin/handicraft/{handiCraft:slug}/edit', 'edit')->name('handicraft.edit');
         Route::delete('/admin/handicraft/{handiCraft:slug}', 'destroy')->name('handicraft.destroy');

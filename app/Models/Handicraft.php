@@ -14,6 +14,7 @@ class Handicraft extends Model
     protected $fillable = [
         'scrap_category_id',
         'title',
+        'slug',
         'image',
         'desc',
         'materials',
