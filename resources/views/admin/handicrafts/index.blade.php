@@ -46,7 +46,7 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $handicraft->title }}</td>
-                    <td>@Ini Kategori</td>
+                    <td>{{ $handicraft->scrap_category->name }}</td>
                     <td>
                       <div class="d-flex justify-content-around align-items-center">
                         <a href="{{ route('handicraft.show', ['handiCraft' => $handicraft->slug]) }}"

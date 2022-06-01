@@ -40,7 +40,7 @@ class HandicraftController extends Controller
     {
         return view('admin.handicrafts.index', [
             'title' => 'Handicrafts',
-            'handicrafts' => Handicraft::all()
+            'handicrafts' => Handicraft::all(),
         ]);
     }
         /**
@@ -88,7 +88,10 @@ class HandicraftController extends Controller
      */
     public function edit(Handicraft $handiCraft)
     {
-        //
+        return view('admin.handicrafts.edit', [
+            'title' => 'Edit',
+            'handicraft' => $handiCraft,
+        ]);
     }
 
     /**
