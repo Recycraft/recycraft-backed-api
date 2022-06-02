@@ -49,7 +49,7 @@ class ScrapCategoryController extends Controller
     public function index()
     {
         return view('admin.scraps.index', [
-            'title' => 'Scrap Category',
+            'title' => 'Scrap Categories',
             'scraps' => ScrapCategory::all(),
         ]);
     }
