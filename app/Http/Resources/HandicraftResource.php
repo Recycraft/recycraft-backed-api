@@ -16,6 +16,7 @@ class HandicraftResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'scrap_category_id' => new ScrapCategoryResource($this->category),
             'title' => $this->title,
             'image' => $this->image,
