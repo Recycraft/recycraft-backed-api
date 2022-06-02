@@ -4,13 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Enums\ScrapType;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Illuminate\Support\Facades\Storage;
-=======
 use App\Models\ScrapCategory;
 use App\Http\Resources\ScrapCategoryResource;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
->>>>>>> 54d31fd675845dd06177b742107d8cdee27093aa
+
 
 class ScrapCategoryController extends Controller
 {
@@ -210,7 +208,7 @@ class ScrapCategoryController extends Controller
                 $image_name= "/upload/" . time().$item.'.png';
                 $path = public_path() . $image_name;
                 file_put_contents($path, $imgeData);
-    
+
                 $image->removeAttribute('src');
                 $image->setAttribute('src', $image_name);
             } else {
