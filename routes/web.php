@@ -19,11 +19,12 @@ use App\Http\Resources\ScrapCategoryResource;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
+    Route::get('/', 'index');
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'login');
     Route::get('/register', 'registerIndex')->name('register');
