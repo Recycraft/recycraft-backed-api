@@ -45,8 +45,7 @@
           <div class="form-group">
             <label for="inputDescription">Category Description</label>
             <textarea id="summernote" name="desc">
-              {{ old('desc' ,'Description') }}
-            </textarea>
+              {{ old('desc', 'Description') }}</textarea>
           </div>
           @error('desc')
             <div class="error invalid-feedback">
@@ -91,4 +90,13 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <script>
+    const name = document.querySelector('#name');
+    const slug = document.querySelector('#slug');
+    name.addEventListener('change', function() {
+      fetch('/admin/scrap/checkSlug?category=' + name.value)
+        .then(response => response.json()).then(data => slug
+          .value = data.slug)
+    });
+  </script>
 @endsection

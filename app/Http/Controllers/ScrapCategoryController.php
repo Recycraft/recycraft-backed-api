@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ScrapType;
-use App\Http\Resources\ScrapCategoryResource;
-use App\Models\ScrapCategory;
 use Illuminate\Http\Request;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Storage;
+=======
+use App\Models\ScrapCategory;
+use App\Http\Resources\ScrapCategoryResource;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+>>>>>>> 54d31fd675845dd06177b742107d8cdee27093aa
 
 class ScrapCategoryController extends Controller
 {
@@ -246,8 +250,12 @@ class ScrapCategoryController extends Controller
         if ($scrapCategory != ''){
             Storage::delete($scrapCategory->image);
         }
-
         $scrapCategory->delete();
-        return redirect()->route('scrap.index')->with('success', 'Data has been deleted');
+        return redirect()->route('scrap.index')->with('success', 'Scrap has been deleted successfully!');
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(ScrapCategory::class, 'slug', $request->category);
+        return response()->json(['slug' => $slug]);
     }
 }

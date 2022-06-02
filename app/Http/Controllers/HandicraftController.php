@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Handicraft;
 use Illuminate\Http\Request;
 use App\Http\Resources\HandicraftResource;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
+# composer require cviebrock/eloquent-sluggable
 
 class HandicraftController extends Controller
 {
@@ -24,9 +26,9 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function getById(Handicraft $handicraft)
+    public function getById(Handicraft $handiCraft)
     {
-        return new HandicraftResource($handicraft);
+        return new HandicraftResource($handiCraft);
     }
 
     /**
@@ -38,10 +40,21 @@ class HandicraftController extends Controller
     {
         return view('admin.handicrafts.index', [
             'title' => 'Handicrafts',
-            'handicrafts' => Handicraft::all()
+            'handicrafts' => Handicraft::all(),
         ]);
     }
-
+        /**
+     * Show the form for creating new category.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('admin.handicrafts.create', [
+            'title' => 'Add Handicrafts',
+        ]);
+    }
     /**
      * Store a newly created Handicraft.
      *
@@ -59,12 +72,11 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function show(Handicraft $handicraft, $slug)
+    public function show(Handicraft $handiCraft)
     {
-        $handicraft = $handicraft::where('slug', $slug)->get()->first();
         return view('admin.handicrafts.show', [
             'title' => 'Detail',
-            'handicraft' => $handicraft,
+            'handicraft' => $handiCraft,
         ]);
     }
 
@@ -74,9 +86,12 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function edit(Handicraft $handicraft)
+    public function edit(Handicraft $handiCraft)
     {
-        //
+        return view('admin.handicrafts.edit', [
+            'title' => 'Edit',
+            'handicraft' => $handiCraft,
+        ]);
     }
 
     /**
@@ -86,7 +101,7 @@ class HandicraftController extends Controller
      * @param  \App\Models\ScrapCategory  $scrapCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Handicraft $handicraft)
+    public function update(Request $request, Handicraft $handiCraft)
     {
         //
     }
@@ -97,8 +112,14 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Handicraft $handicraft)
+    public function destroy(Handicraft $handiCraft)
     {
-        //
+        $handiCraft->delete();
+        return redirect()->route('handicraft.index')->with('success', 'Handicraft has been deleted successfully!');
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(Handicraft::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

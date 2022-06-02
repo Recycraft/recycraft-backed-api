@@ -39,10 +39,12 @@ Route::middleware(['admin', 'auth'])->group(function () {
         Route::get('/admin/users', 'index')->name('users');
 
     });
+
     #Scraps Categories
     Route::controller(ScrapCategoryController::class)->group(function () {
         Route::get('/admin/scrap', 'index')->name('scrap.index');
         Route::get('/admin/scrap/create', 'create')->name('scrap.create');
+        Route::get('/admin/scrap/checkSlug',  'checkSlug');
         Route::get('/admin/scrap/{scrapCategory:slug}', 'show')->name('scrap.show');
         Route::get('/admin/scrap/{scrapCategory:slug}/edit', 'edit')->name('scrap.edit');
         Route::delete('/admin/scrap/{scrapCategory:slug}', 'destroy')->name('scrap.destroy');
@@ -52,10 +54,11 @@ Route::middleware(['admin', 'auth'])->group(function () {
     #Handicrafts
     Route::controller(HandicraftController::class)->group(function () {
         Route::get('/admin/handicraft', 'index')->name('handicraft.index');
-        Route::get('/admin/handicraft/{slug}', 'show')->name('handicraft.show');
         Route::get('/admin/handicraft/create', 'create')->name('handicraft.create');
-        Route::get('/admin/handicraft/{slug}/edit', 'edit')->name('handicraft.edit');
-        Route::delete('/admin/handicraft/{slug}', 'destroy')->name('handicraft.destroy');
+        Route::get('/admin/handicraft/checkSlug',  'checkSlug');
+        Route::get('/admin/handicraft/{handiCraft:slug}', 'show')->name('handicraft.show');
+        Route::get('/admin/handicraft/{handiCraft:slug}/edit', 'edit')->name('handicraft.edit');
+        Route::delete('/admin/handicraft/{handiCraft:slug}', 'destroy')->name('handicraft.destroy');
     });
 });
 

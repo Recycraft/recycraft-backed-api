@@ -46,14 +46,15 @@
                   <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $handicraft->title }}</td>
-                    <td>@dd($handicraft)</td>
+                    <td>{{ $handicraft->scrap_category->name }}</td>
                     <td>
                       <div class="d-flex justify-content-around align-items-center">
-                        <a href="{{ route('handicraft.show', ['slug' => $handicraft->slug]) }}"
+                        <a href="{{ route('handicraft.show', ['handiCraft' => $handicraft->slug]) }}"
                           class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                        <a href="{{ route('handicraft.edit', ['slug' => $handicraft->slug]) }}"
+                        <a href="{{ route('handicraft.edit', ['handiCraft' => $handicraft->slug]) }}"
                           class="btn bg-warning"><i class="fas fa-edit"></i></a>
-                        <form method="post" action="{{ route('handicraft.destroy', ['slug' => $handicraft->slug]) }}">
+                        <form method="post"
+                          action="{{ route('handicraft.destroy', ['handiCraft' => $handicraft->slug]) }}">
                           @csrf @method('delete')
                           <button type="submit" class="btn bg-danger" onclick="return confirm('Are you sure?')"><i
                               class="fas fa-trash"></i></button>

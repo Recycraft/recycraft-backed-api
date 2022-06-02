@@ -43,6 +43,7 @@
           </div>
           <h4>Description</h4>
           <p>{{ $scrap->desc }}</p>
+          <a href="{{ route('scrap.index') }}" class="btn bg-teal">Back</a>
         </div>
         <!-- /.card-body -->
       </div>

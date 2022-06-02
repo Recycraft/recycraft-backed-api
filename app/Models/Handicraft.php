@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\ScrapCategory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Handicraft extends Model
 {
@@ -14,17 +15,23 @@ class Handicraft extends Model
     protected $fillable = [
         'scrap_category_id',
         'title',
+        'slug',
         'image',
         'desc',
         'materials',
         'process'
     ];
 
-    protected $with = ['category'];
+    protected $with = ['scrap_category'];
 
-    public function category()
+    public function scrap_category()
     {
         return $this->belongsTo(ScrapCategory::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     public function sluggable(): array
