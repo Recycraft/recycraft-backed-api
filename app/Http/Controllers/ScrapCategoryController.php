@@ -6,6 +6,7 @@ use App\Enums\ScrapType;
 use App\Http\Resources\ScrapCategoryResource;
 use App\Models\ScrapCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ScrapCategoryController extends Controller
 {
@@ -158,7 +159,70 @@ class ScrapCategoryController extends Controller
      */
     public function update(Request $request, ScrapCategory $scrapCategory)
     {
-        //
+        $rules = [
+            'name' => 'required|string',
+            'desc' => 'required',
+            'type' => 'required',
+        ];
+
+        if ($request->hasFile('image')){
+            $rules['image'] = 'image';
+        }
+
+        if ($request->slug != $scrapCategory->slug){
+            $rules = 'required|unique:scrap_categories';
+        }
+
+        $request->validate($rules);
+
+        $data = [
+            'name' => $request->name,
+            'type' => $request->type,
+        ];
+
+        if ($request->slug != $scrapCategory->slug){
+            $data['slug'] = $request->slug;
+        }
+
+        if ($request->hasFile('image')){
+            if ($scrapCategory->image != ''){
+                Storage::delete($scrapCategory->image);
+            }
+            $new_image = $request->file('image')->store('images/scrap-categories');
+            $data['image'] = $new_image;
+        }
+
+        $desc = $request->desc;
+        $dom = new \DomDocument();
+        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
+
+        foreach($imageFile as $item => $image){
+            $data = $image->getAttribute('src');
+            if (strpos($data, 'base64')){
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $imgeData = base64_decode($data);
+                $image_name= "/upload/" . time().$item.'.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+    
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+            } else {
+                $image_name = '/'.$data;
+                $image->setAttribute('src', $image_name);
+            }
+        }
+
+        $desc = $dom->saveHTML();
+        $data['desc'] = $desc;
+
+        if (ScrapCategory::where('id', $scrapCategory->id)->update($data)){
+            return redirect()->route('scrap.edit')->with('success', 'Data has been updated');
+        } else {
+            return back()->withInput()->withErrors('Update failed');
+        }
     }
 
     /**
@@ -169,6 +233,21 @@ class ScrapCategoryController extends Controller
      */
     public function destroy(ScrapCategory $scrapCategory)
     {
-        //
+        $desc = $scrapCategory->desc;
+        $dom = new \DomDocument();
+        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
+
+        foreach($imageFile as $item => $image){
+            $data = $image->getAttribute('src');
+            Storage::delete($data);
+        }
+
+        if ($scrapCategory != ''){
+            Storage::delete($scrapCategory->image);
+        }
+
+        $scrapCategory->delete();
+        return redirect()->route('scrap.index')->with('success', 'Data has been deleted');
     }
 }

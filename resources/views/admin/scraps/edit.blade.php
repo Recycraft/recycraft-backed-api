@@ -35,8 +35,13 @@
           @enderror
           <div class="form-group">
             <label for="slug">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-control" value="{{ $scrap->slug }}" disabled>
+            <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug', $scrap->slug) }}">
           </div>
+          @error('slug')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
           <div class="form-group">
             <label for="summernote">Category Description</label>
             <textarea id="summernote" name="desc">
