@@ -22,68 +22,75 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
-      <div class="card card-dark">
-        <div class="card-body">
-          <div class="form-group">
-            <label for="name">Category Name</label>
-            <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}">
-          </div>
-          @error('name')
-            <div class="error invalid-feedback">
-              {{ $message }}
+      @if(session()->has('error'))
+        {{ session('error') }}
+      @endif
+      <form action="{{ route('scrap.store') }}" method="POST">
+      @csrf
+        <div class="card card-dark">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="name">Category Name</label>
+              <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}">
             </div>
-          @enderror
-          <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug') }}">
-          </div>
-          @error('slug')
-            <div class="error invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-          <div class="form-group">
-            <label for="inputDescription">Category Description</label>
-            <textarea id="summernote" name="desc">
-              {{ old('desc', 'Description') }}</textarea>
-          </div>
-          @error('desc')
-            <div class="error invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-          <div class="form-group">
-            <label for="image">Picture</label>
-            <div class="input-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" name="image" id="image">
-                <label class="custom-file-label" for="image">Choose file</label>
+            @error('name')
+              <div class="error invalid-feedback">
+                {{ $message }}
               </div>
+            @enderror
+            <div class="form-group">
+              <label for="slug">Slug</label>
+              <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug') }}">
             </div>
-            <img src="" alt="" class="img-preview img-fluid mt-1 col-6 col-sm-4 col-lg-2">
+            @error('slug')
+              <div class="error invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+            <div class="form-group">
+              <label for="inputDescription">Category Description</label>
+              <textarea id="summernote" name="desc">
+                {{ old('desc', 'Description') }}</textarea>
+            </div>
+            @error('desc')
+              <div class="error invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+            <div class="form-group">
+              <label for="image">Picture</label>
+              <div class="input-group">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" name="image" id="image">
+                  <label class="custom-file-label" for="image">Choose file</label>
+                </div>
+              </div>
+              <img src="" alt="" class="img-preview img-fluid mt-1 col-6 col-sm-4 col-lg-2">
+            </div>
+            @error('image')
+              <div class="error invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+            <div class="form-group">
+              <label for="inputStatus">Type</label>
+              <select id="inputStatus" name="type" class="form-control custom-select">
+                <option selected>Select one</option>
+                @foreach ($scrapType as $type)
+                  <option value="{{ $type->value }}">{{ $type->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            @error('type')
+              <div class="error invalid-feedback">
+                {{ $message }}
+              </div>
+            @enderror
+            <button type="submit" class="btn btn-primary">Save</button>
           </div>
-          @error('image')
-            <div class="error invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-          <div class="form-group">
-            <label for="inputStatus">Type</label>
-            <select id="inputStatus" name="type" class="form-control custom-select">
-              <option selected>Select one</option>
-              @foreach ($scrapType as $type)
-                <option value="{{ $type->value }}">{{ $type->name }}</option>
-              @endforeach
-            </select>
-          </div>
-          @error('type')
-            <div class="error invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
+          <!-- /.card-body -->
         </div>
-        <!-- /.card-body -->
-      </div>
+      </form>
       <!-- /.card -->
       <!--/. container-fluid -->
     </section>

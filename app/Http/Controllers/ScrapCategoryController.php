@@ -70,6 +70,37 @@ class ScrapCategoryController extends Controller
         ]);
     }
 
+    public function storeApi(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'slug' => 'required|unique:scrap_categories',
+            'desc' => 'required|string',
+            'type' => 'required|string',
+            'image' => 'required|image'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'slug' => $request->slug,
+            'desc' => $request->desc,
+            'type' => $request->type,
+        ];
+
+        $path_image = $request->file('image')->store('images/scrap-categories/');
+        $data['image'] = $path_image;
+
+        if(ScrapCategory::create($data)){
+            return response()->json([
+                'message' => 'Data has been saved'
+            ], 201);
+        } else {
+            return response()->json([
+                'message' => "Data failed to save",
+            ], 401);
+        }
+    }
+
     /**
      * Store a newly created Scrap Category.
      *
@@ -119,7 +150,7 @@ class ScrapCategoryController extends Controller
         if (ScrapCategory::create($data)){
             return redirect()->route('scrap.index')->with('success', 'Upload berhasil');
         } else {
-            return back()->withInput()->withErrors('Cannot Store in Database');
+            return back()->withInput()->with('error', 'Cannot Store in Database');
         }
     }
 
@@ -196,7 +227,7 @@ class ScrapCategoryController extends Controller
 
         $desc = $request->desc;
         $dom = new \DomDocument();
-        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        @$dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $imageFile = $dom->getElementsByTagName('imageFile');
 
         foreach($imageFile as $item => $image){
@@ -221,9 +252,9 @@ class ScrapCategoryController extends Controller
         $data['desc'] = $desc;
 
         if (ScrapCategory::where('id', $scrapCategory->id)->update($data)){
-            return redirect()->route('scrap.edit')->with('success', 'Data has been updated');
+            return redirect()->route('scrap.index')->with('success', 'Data has been updated');
         } else {
-            return back()->withInput()->withErrors('Update failed');
+            return back()->withInput()->with('error', 'Cannot Update');
         }
     }
 

@@ -31,12 +31,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::controller(HandicraftController::class)->group(function () {
         Route::get('/handicraft', 'getAll');
         Route::get('/handicraft/{handicraft:slug}', 'getById');
+        Route::post('/handicraft/', 'storeApi');
     });
 
     Route::controller(ScrapCategoryController::class)->group(function () {
         Route::get('/category', 'getAll');
         Route::get('/category-with-handicrafts', 'getAllWithCrafts');
         Route::get('/category/{scrapCategory:slug}', 'getById');
+        Route::post('/category/', 'storeApi');
     });
 });
 

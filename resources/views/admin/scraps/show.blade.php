@@ -37,12 +37,12 @@
               <h4>Slug</h4>
               <p>{{ $scrap->slug }}</p>
               <h4>Type</h4>
-              <p>{{ $scrap->type }}</p>
+              <p>{{ $scrap->type->name }}</p>
 
             </div>
           </div>
           <h4>Description</h4>
-          <p>{{ $scrap->desc }}</p>
+          <p>{!! $scrap->desc !!}</p>
           <a href="{{ route('scrap.index') }}" class="btn bg-teal">Back</a>
         </div>
         <!-- /.card-body -->
