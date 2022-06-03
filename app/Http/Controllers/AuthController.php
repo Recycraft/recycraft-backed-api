@@ -50,8 +50,13 @@ class AuthController extends Controller
             $response = ['message' => 'Bad credentials.',];
             return response($response, 401);
         }
-     
-        return $user->createToken($request->device_name)->plainTextToken;
+        
+        $token = $user->createToken($request->device_name)->plainTextToken;
+        $data = [
+            'user' => $user,
+            'token' => $token
+        ];
+        return response()->json($data, 200);
     }
 
     public function logOutApi(Request $request)
@@ -66,7 +71,7 @@ class AuthController extends Controller
 
     public function getProfile(Request $request)
     {
-        return $request->user();
+        return response()->json($request->user(), 200);
     }
 
     public function index()
