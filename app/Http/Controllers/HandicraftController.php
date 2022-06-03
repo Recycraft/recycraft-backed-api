@@ -26,9 +26,9 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function getById(Handicraft $handiCraft)
+    public function getById(Handicraft $handicraft)
     {
-        return new HandicraftResource($handiCraft);
+        return new HandicraftResource($handicraft);
     }
 
     /**
