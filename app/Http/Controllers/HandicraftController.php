@@ -55,6 +55,43 @@ class HandicraftController extends Controller
             'title' => 'Add Handicrafts',
         ]);
     }
+
+    public function storeApi(Request $request)
+    {
+        $request->validate([
+            'scrap_category_id' => 'required|integer',
+            'title' => 'required|string',
+            'slug' => 'required|unique:handicrafts',
+            'image' => 'required|image',
+            'desc' => 'required',
+            'materials' => 'required',
+            'process' => 'required',
+        ]);
+
+        $data = [
+            'scrap_category_id' => $request->scrap_category_id,
+            'title' => $request->title,
+            'slug' => $request->slug,
+            'desc' => $request->desc,
+            'materials' => $request->materials,
+            'process' => $request->process,
+        ];
+
+        $image_path = $request->file('image')->store('images/handicrafts');
+
+        $data['image'] = $image_path;
+
+        if (Handicraft::create($data)){
+            return response()->json([
+                'message' => "Upload Successfull",
+            ], 201);
+        } else {
+            return response()->json([
+                'message' => "Upload Failed",
+            ], 400);
+        }
+    }
+
     /**
      * Store a newly created Handicraft.
      *
