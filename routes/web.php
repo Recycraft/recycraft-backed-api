@@ -45,6 +45,7 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::controller(ScrapCategoryController::class)->group(function () {
         Route::get('/admin/scrap', 'index')->name('scrap.index');
         Route::get('/admin/scrap/create', 'create')->name('scrap.create');
+        Route::post('/admin/scrap/', 'store')->name('scrap.store');
         Route::get('/admin/scrap/checkSlug',  'checkSlug');
         Route::put('/admin/scrap/{scrapCategory:slug}', 'update')->name('scrap.update');
         Route::get('/admin/scrap/{scrapCategory:slug}', 'show')->name('scrap.show');
