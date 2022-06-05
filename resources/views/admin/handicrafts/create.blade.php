@@ -43,17 +43,6 @@
             </div>
           @enderror
           <div class="form-group">
-            <label for="inputDescription">Category Description</label>
-            <textarea id="summernote" name="desc">
-              {{ old('desc', 'Description') }}
-            </textarea>
-          </div>
-          @error('desc')
-            <div class="error invalid-feedback">
-              {{ $message }}
-            </div>
-          @enderror
-          <div class="form-group">
             <label for="image">Picture</label>
             <div class="input-group">
               <div class="custom-file">
@@ -68,6 +57,40 @@
               {{ $message }}
             </div>
           @enderror
+          <div class="form-group">
+            <label for="inputDescription">Handicraft Description</label>
+            <textarea id="summernote" name="desc">
+              {{ old('desc', 'Description') }}
+            </textarea>
+          </div>
+          @error('desc')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="form-group">
+            <label for="inputDescription">Handicraft Materials</label>
+            <textarea id="summernote" name="materials">
+              {{ old('materials', 'Description') }}
+            </textarea>
+          </div>
+          @error('materials')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="form-group">
+            <label for="inputDescription">Handicraft Step by Step</label>
+            <textarea id="summernote" name="process">
+              {{ old('process', 'Description') }}
+            </textarea>
+          </div>
+          @error('process')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
         <!-- /.card-body -->
       </div>

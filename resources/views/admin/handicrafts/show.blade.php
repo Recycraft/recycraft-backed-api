@@ -39,12 +39,12 @@
             </div>
           </div>
           <h4>Description</h4>
-          <p>{{ $handicraft->desc }}</p>
+          <p>{!! $handicraft->desc !!}</p>
           <hr>
           <h4>Materials</h4>
-          <p>{{ $handicraft->materials }}</p>
+          <p>{!! $handicraft->materials !!}</p>
           <h4>Procedure</h4>
-          <p>{{ $handicraft->process }}</p>
+          <p>{!! $handicraft->process !!}</p>
         </div>
         <!-- /.card-body -->
       </div>

@@ -69,8 +69,8 @@
   <script>
     $(function() {
       // Summernote
-      $('#summernote').summernote()
-    })
+      $('#summernote').summernote();
+    });
     $(function () {
       bsCustomFileInput.init();
     });

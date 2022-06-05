@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('handicraft.index') }}">Handicraft</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('handicraft.index') }}">Handicrafts</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -25,9 +25,8 @@
       <div class="card card-dark">
         <div class="card-body">
           <div class="form-group">
-            <label for="name">Title</label>
-            <input type="text" id="title" name="title" class="form-control"
-              value="{{ old('title', $handicraft->title) }}">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" value="{{ old('title', $craft->title) }}">
           </div>
           @error('title')
             <div class="error invalid-feedback">
@@ -36,15 +35,9 @@
           @enderror
           <div class="form-group">
             <label for="slug">Slug</label>
-            <input type="text" id="slug" name="slug" class="form-control" value="{{ $handicraft->slug }}" disabled>
+            <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug', $craft->slug) }}">
           </div>
-          <div class="form-group">
-            <label for="summernote">Handicraft Description</label>
-            <textarea id="summernote" name="desc">
-              {{ $handicraft->desc }}
-            </textarea>
-          </div>
-          @error('desc')
+          @error('slug')
             <div class="error invalid-feedback">
               {{ $message }}
             </div>
@@ -57,19 +50,53 @@
                 <label class="custom-file-label" for="image">Choose file</label>
               </div>
             </div>
-            @if ($handicraft->image)
-              <img src="{{ asset('storage/' . $handicraft->image) }}" alt=""
-                class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
-            @else
-              <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
-            @endif
+            @if ($craft->image)
+                <img src="{{ asset('storage/' . $craft->image) }}" alt=""
+                  class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
+              @else
+                <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
+              @endif
             <img src="" alt="" class="img-preview img-fluid mt-1 col-6 col-sm-4 col-lg-2">
-            @error('image')
-              <div class="error invalid-feedback">
-                {{ $message }}
-              </div>
-            @enderror
           </div>
+          @error('image')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="form-group">
+            <label for="inputDescription">Handicraft Description</label>
+            <textarea id="summernote" name="desc">
+              {{ old('desc', $scrap->desc) }}
+            </textarea>
+          </div>
+          @error('desc')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="form-group">
+            <label for="inputDescription">Handicraft Materials</label>
+            <textarea id="summernote" name="materials">
+              {{ old('materials', $scrap->materials) }}
+            </textarea>
+          </div>
+          @error('materials')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="form-group">
+            <label for="inputDescription">Handicraft Step by Step</label>
+            <textarea id="summernote" name="process">
+              {{ old('process', $scrap->process) }}
+            </textarea>
+          </div>
+          @error('process')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <button type="submit" class="btn btn-primary">Save</button>
         </div>
         <!-- /.card-body -->
       </div>
@@ -84,8 +111,8 @@
     const slug = document.querySelector('#slug');
     title.addEventListener('change', function() {
       fetch('/admin/handicraft/checkSlug?title=' + title.value)
-        .then(response => response.json())
-        .then(data => slug.value = data.slug)
+        .then(response => response.json()).then(data => slug
+          .value = data.slug)
     });
   </script>
 @endsection
