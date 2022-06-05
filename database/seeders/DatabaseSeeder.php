@@ -45,60 +45,70 @@ class DatabaseSeeder extends Seeder
             'name' => 'Plastic',
             'slug' => 'plastic',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'blablabla'
         ]);
         ScrapCategory::create([
             'name' => 'Paper',
             'slug' => 'paper',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'blablabla'
         ]);
         ScrapCategory::create([
             'name' => 'Cardboard',
             'slug' => 'cardboard',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Styrofoam',
             'slug' => 'styrofoam',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Plastic Bottle',
             'slug' => 'bottle-plastic',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Can',
             'slug' => 'can',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Plastic Spoon',
             'slug' => 'spoon-plastic',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Stick',
             'slug' => 'stick',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Straw',
             'slug' => 'straw',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
         ScrapCategory::create([
             'name' => 'Plastic Cup',
             'slug' => 'glass-plastic',
             'image' => '',
+            'type' => 'recycleable',
             'desc' => 'bla bla bla'
         ]);
 
