@@ -100,7 +100,37 @@ class HandicraftController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'scrap_category_id' => 'required|integer',
+            'title' => 'required',
+            'slug' => 'required|unique:handicraft',
+            'image' => 'required|image',
+            'desc' => 'required',
+            'material' => 'required',
+            'process' => 'required',
+        ]);
+
+        $data = [
+            'scrap_category_id' => $request->scrap_category_id,
+            'title' => $request->title,
+            'slug' => $request->slug,
+        ];
+
+        $path_image = $request->file('image')->store('images/scrap-categories/');
+        $data['image'] = $path_image;
+
+        $desc = processSummernote($request->desc);
+        $data['desc'] = $desc;
+        $materials = processSummernote($request->materials);
+        $data['materials'] = $materials;
+        $process = processSummernote($request->process);
+        $data['process'] = $process;
+
+        if (Handicraft::create($data)){
+            return redirect()->route('crafts.index')->with('success', 'Upload berhasil');
+        } else {
+            return back()->withInput()->with('error', 'Cannot Store in Database');
+        }
     }
 
     /**
