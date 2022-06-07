@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Handicraft;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\HandicraftResource;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 # composer require cviebrock/eloquent-sluggable
@@ -168,9 +169,24 @@ class HandicraftController extends Controller
      * @param  \App\Models\ScrapCategory  $scrapCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Handicraft $handiCraft)
+    public function update(Request $request, Handicraft $handicraft)
     {
-        //
+        $rules = [
+            'scrap_category_id' => 'required',
+            'name' => 'required|string',
+            'desc' => 'required',
+            'materials' => 'required',
+            'process' => 'required',
+            'image' => 'nullable|image'
+        ];
+
+        if ($request->slug != $handicraft->slug){
+            $rules['slug'] = 'unique:handicrafts';
+        }
+
+        $request->validate($rules);
+
+        
     }
 
     /**
@@ -179,9 +195,15 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Handicraft $handiCraft)
+    public function destroy(Handicraft $handicraft)
     {
-        $handiCraft->delete();
+        summernoteDeleteImage($handicraft->desc);
+        summernoteDeleteImage($handicraft->materials);
+        summernoteDeleteImage($handicraft->process);
+        if ($handicraft->image != ''){
+            Storage::delete($handicraft->image);
+        }
+        $handicraft->delete();
         return redirect()->route('handicraft.index')->with('success', 'Handicraft has been deleted successfully!');
     }
 

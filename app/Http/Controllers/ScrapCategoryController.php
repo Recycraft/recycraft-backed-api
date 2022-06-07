@@ -225,17 +225,8 @@ class ScrapCategoryController extends Controller
      */
     public function destroy(ScrapCategory $scrapCategory)
     {
-        $desc = $scrapCategory->desc;
-        $dom = new \DomDocument();
-        $dom->loadHtml($desc, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('imageFile');
-
-        foreach($imageFile as $item => $image){
-            $data = $image->getAttribute('src');
-            Storage::delete($data);
-        }
-
-        if ($scrapCategory != ''){
+        summernoteDeleteImage($scrapCategory->desc);
+        if ($scrapCategory->image != ''){
             Storage::delete($scrapCategory->image);
         }
         $scrapCategory->delete();
