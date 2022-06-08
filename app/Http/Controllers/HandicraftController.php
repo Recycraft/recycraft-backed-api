@@ -27,7 +27,7 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function getById(Handicraft $handicraft)
+    public function getBySlug(Handicraft $handicraft)
     {
         return new HandicraftResource($handicraft);
     }
@@ -140,11 +140,11 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function show(Handicraft $handiCraft)
+    public function show(Handicraft $handicraft)
     {
         return view('admin.handicrafts.show', [
             'title' => 'Detail',
-            'handicraft' => $handiCraft,
+            'handicraft' => $handicraft,
         ]);
     }
 
@@ -154,11 +154,11 @@ class HandicraftController extends Controller
      * @param  \App\Models\Handicraft  $handicraft
      * @return \Illuminate\Http\Response
      */
-    public function edit(Handicraft $handiCraft)
+    public function edit(Handicraft $handicraft)
     {
         return view('admin.handicrafts.edit', [
             'title' => 'Edit',
-            'handicraft' => $handiCraft,
+            'handicraft' => $handicraft,
         ]);
     }
 

@@ -30,7 +30,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::controller(HandicraftController::class)->group(function () {
         Route::get('/handicraft', 'getAll');
-        Route::get('/handicraft/{handicraft:slug}', 'getById');
+        Route::get('/handicraft/{handicraft:slug}', 'getBySlug');
         Route::post('/handicraft/', 'storeApi');
     });
 
