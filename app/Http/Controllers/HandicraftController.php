@@ -117,7 +117,7 @@ class HandicraftController extends Controller
             'slug' => $request->slug,
         ];
 
-        $path_image = $request->file('image')->store('images/scrap-categories/');
+        $path_image = $request->file('image')->store('images/handicrafts/');
         $data['image'] = $path_image;
 
         $desc = processSummernote($request->desc);
@@ -186,7 +186,30 @@ class HandicraftController extends Controller
 
         $request->validate($rules);
 
-        
+        $data = [
+            'scrap_category_id' => $request->scrap_category_id,
+            'title' => $request->title,
+            'desc' => processSummernote($request->desc),
+            'materials' => processSummernote($request->process),
+        ];
+
+        if($request->slug != $handicraft->slug){
+            $data['slug'] = $request->slug;
+        }
+
+        if ($request->hasFile('image')){
+            if($handicraft->image != ''){
+                Storage::delete($handicraft->image);
+            }
+            $new_image = $request->file('image')->store('images/handicrafts');
+            $data['image'] = $new_image;
+        }
+
+        if (Handicraft::where('id', $handicraft->id)->update($data)){
+            return redirect()->route('handicraft.index')->with('success', "Handicraft has been updated");
+        } else {
+            return back()->withInput()->with('error', "Update Failed");
+        }
     }
 
     /**
