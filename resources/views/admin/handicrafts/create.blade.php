@@ -43,6 +43,20 @@
             </div>
           @enderror
           <div class="form-group">
+            <label for="inputStatus">Category</label>
+            <select id="inputStatus" name="scrap_category_id" class="form-control custom-select">
+              <option selected>Select one</option>
+              @foreach ($categories as $type)
+                <option value="{{ $type->id }}">{{ $type->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          @error('scrap_category_id')
+            <div class="error invalid-feedback">
+              {{ $message }}
+            </div>
+          @enderror
+          <div class="form-group">
             <label for="image">Picture</label>
             <div class="input-group">
               <div class="custom-file">
@@ -70,8 +84,8 @@
           @enderror
           <div class="form-group">
             <label for="inputDescription">Handicraft Materials</label>
-            <textarea id="summernote" name="materials">
-              {{ old('materials', 'Description') }}
+            <textarea id="summernote2" name="materials">
+              {{ old('materials', 'Materials') }}
             </textarea>
           </div>
           @error('materials')
@@ -81,8 +95,8 @@
           @enderror
           <div class="form-group">
             <label for="inputDescription">Handicraft Step by Step</label>
-            <textarea id="summernote" name="process">
-              {{ old('process', 'Description') }}
+            <textarea id="summernote3" name="process">
+              {{ old('process', 'Process') }}
             </textarea>
           </div>
           @error('process')

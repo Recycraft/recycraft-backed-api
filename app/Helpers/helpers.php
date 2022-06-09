@@ -11,24 +11,30 @@ if (! function_exists('processSummernote')) {
   function processSummernote($content)
   {
     $dom = new \DomDocument();
-    $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-    $imageFile = $dom->getElementsByTagName('imageFile');
+    @$dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    $imageFile = $dom->getElementsByTagName('img');
 
     foreach($imageFile as $item => $image){
       $data = $image->getAttribute('src');
       if (strpos($data, 'base64')){
-          list($type, $data) = explode(';', $data);
-          list(, $data)      = explode(',', $data);
-          $imgeData = base64_decode($data);
-          $image_name= "/upload/" . time().$item.'.png';
-          $path = public_path() . $image_name;
-          file_put_contents($path, $imgeData);
+        $folderPath = 'uploads/';
+        $image_64 = $data; //your base64 encoded data
+        $extension = explode('/', explode(':', substr($image_64, 0, strpos($image_64, ';')))[1])[1];   // .jpg .png .pdf
+        $replace = substr($image_64, 0, strpos($image_64, ',')+1); 
 
-          $image->removeAttribute('src');
-          $image->setAttribute('src', $image_name);
+        // find substring fro replace here eg: data:image/png;base64,
+        $imageToSave = str_replace($replace, '', $image_64); 
+        $imageToSave = str_replace(' ', '+', $imageToSave); 
+        $imageName = $folderPath . uniqid() . '.'.$extension;
+
+        Storage::disk('public')->put($imageName, base64_decode($imageToSave));
+        $path = Storage::url($imageName);
+
+        $image->removeAttribute('src');
+        $image->setAttribute('src', $path);
       } else {
-          $image_name = '/'.$data;
-          $image->setAttribute('src', $image_name);
+        $image_name = $data;
+        $image->setAttribute('src', $image_name);
       }
     }
 
@@ -41,7 +47,7 @@ if (!function_exists('summernoteDeleteImage')){
   function summernoteDeleteImage($content){
     $dom = new \DomDocument();
     $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-    $imageFile = $dom->getElementsByTagName('imageFile');
+    $imageFile = $dom->getElementsByTagName('img');
 
     foreach($imageFile as $item => $image){
         $data = $image->getAttribute('src');

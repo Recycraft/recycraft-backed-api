@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ScrapType;
 use App\Models\Handicraft;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\HandicraftResource;
+use App\Models\ScrapCategory;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 # composer require cviebrock/eloquent-sluggable
 
@@ -54,6 +56,7 @@ class HandicraftController extends Controller
     {
         return view('admin.handicrafts.create', [
             'title' => 'Add Handicrafts',
+            'categories' => ScrapCategory::all(),
         ]);
     }
 
@@ -159,6 +162,7 @@ class HandicraftController extends Controller
         return view('admin.handicrafts.edit', [
             'title' => 'Edit',
             'handicraft' => $handicraft,
+            'categories' => ScrapCategory::all(),
         ]);
     }
 
@@ -173,7 +177,7 @@ class HandicraftController extends Controller
     {
         $rules = [
             'scrap_category_id' => 'required',
-            'name' => 'required|string',
+            'title' => 'required|string',
             'desc' => 'required',
             'materials' => 'required',
             'process' => 'required',
@@ -190,7 +194,8 @@ class HandicraftController extends Controller
             'scrap_category_id' => $request->scrap_category_id,
             'title' => $request->title,
             'desc' => processSummernote($request->desc),
-            'materials' => processSummernote($request->process),
+            'materials' => processSummernote($request->materials),
+            'process' => processSummernote($request->process),
         ];
 
         if($request->slug != $handicraft->slug){
