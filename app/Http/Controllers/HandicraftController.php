@@ -190,6 +190,10 @@ class HandicraftController extends Controller
 
         $request->validate($rules);
 
+        cekImageSummernote($handicraft->desc, $request->desc);
+        cekImageSummernote($handicraft->materials, $request->materials);
+        cekImageSummernote($handicraft->process, $request->process);
+
         $data = [
             'scrap_category_id' => $request->scrap_category_id,
             'title' => $request->title,

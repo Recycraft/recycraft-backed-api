@@ -57,3 +57,42 @@ if (!function_exists('summernoteDeleteImage')){
     }
   }
 }
+
+if (!function_exists('cekImageSummernote')){
+  function cekImageSummernote($original, $new){
+    $dom_original = new \DomDocument();
+    @$dom_original->loadHtml($original, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    $image_file_original = $dom_original->getElementsByTagName('img');
+
+    $links_original = collect([]);
+
+    foreach($image_file_original as $item => $image){
+      $data = $image->getAttribute('src');
+      if (!strpos($data, 'base64')){
+        $image_name = str_replace(url('/storage'), '', $data);
+        $image_name = substr($image_name, 1);
+        $links_original->push($image_name);
+      }
+    }
+
+    $dom_new = new \DomDocument();
+    @$dom_new->loadHtml($new, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    $image_file_new = $dom_new->getElementsByTagName('img');
+
+    $links_new = collect([]);
+
+    foreach($image_file_new as $item => $image){
+      $data = $image->getAttribute('src');
+      if (!strpos($data, 'base64')){
+        $image_name = str_replace(url('/storage'), '', $data);
+        $image_name = substr($image_name, 1);
+        $links_new->push($image_name);
+      }
+    }
+
+    $diff = $links_original->diff($links_new);
+    foreach ($diff as $deleted_img) {
+      Storage::delete($deleted_img);
+    }
+  }
+}
