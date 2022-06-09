@@ -131,7 +131,7 @@ class HandicraftController extends Controller
         $data['process'] = $process;
 
         if (Handicraft::create($data)){
-            return redirect()->route('handicrafts.index')->with('success', 'Upload berhasil');
+            return redirect()->route('handicraft.index')->with('success', 'Upload berhasil');
         } else {
             return back()->withInput()->with('error', 'Cannot Store in Database');
         }

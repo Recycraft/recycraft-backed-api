@@ -46,12 +46,14 @@ if (! function_exists('processSummernote')) {
 if (!function_exists('summernoteDeleteImage')){
   function summernoteDeleteImage($content){
     $dom = new \DomDocument();
-    $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    @$dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
     $imageFile = $dom->getElementsByTagName('img');
 
     foreach($imageFile as $item => $image){
         $data = $image->getAttribute('src');
-        Storage::delete($data);
+        $imageName = str_replace(url('/storage'), '', $data);
+        $imageName = substr($imageName, 1);
+        Storage::delete($imageName);
     }
   }
 }
