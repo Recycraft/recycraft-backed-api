@@ -1,27 +1,27 @@
 runtime: php
 env: flex
 
-runtime_config:
+runtime_config: 
   document_root: public
 
 # Ensure we skip ".env", which is only for local development
-skip_files:
-  - .env
+skip_files: 
+    - .env
 
 automatic_scaling:
-  min_num_instances: 1
-  max_num_instances: 1
+    min_num_instances: 1
+    max_num_instances: 1
 
 resources:
-  cpu: 2
-  memory_gb: 4
-  disk_size_gb: 100
+    cpu: 2
+    memory_gb: 4
+    disk_size_gb: 100
 
 env_variables:
-  # Put production environment variables here.
-  APP_DEBUG: true
-  APP_ENV: production
-  APP_KEY: base64:sZ38B4raq/tpf2a7yIKiy+EA7gE3aQbrZyvvRyfQkiM=
-  APP_NAME: "NOT LARAVEL"
+    # Put production environment variables here.
+    APP_DEBUG: true
+    APP_ENV: production
+    APP_KEY: base64:YKW7DhcOacJdOC2gZ9i76sGMiA+eSA1lbZa/iryCPcw=
+    APP_NAME: "NOT LARAVEL"
 
-  LOG_LEVEL: debug
+    LOG_LEVEL: debug
