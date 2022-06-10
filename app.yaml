@@ -9,17 +9,17 @@ skip_files:
 
 automatic_scaling:
   min_num_instances: 1
-  max_num_instances: 1
+  max_num_instances: 10
 
 resources:
   cpu: 2
   memory_gb: 4
-  disk_size_gb: 100
+  disk_size_gb: 10
 
 env_variables:
   # Put production environment variables here.
   APP_DEBUG: true
-  APP_ENV: production
+  APP_ENV: development
   APP_KEY: base64:Hxj+LufVkGR06aaMqhYFjlvCF6k+ikpKkvLWHput5mc=
   APP_NAME: "RECYCRAFT"
   LOG_LEVEL: debug
