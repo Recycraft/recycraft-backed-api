@@ -6055,13 +6055,7 @@ z
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-<<<<<<< HEAD
-            "time": "2022-06-06T14:28:04+00:00"
-=======
-            "time": "2022-06-09T07:10:28+00:00"
->>>>>>> 36895e0d9edace87f805dcba494528e66966c04d
-        },
-        {
+            {
             "name": "mockery/mockery",
             "version": "1.5.0",
             "source": {
