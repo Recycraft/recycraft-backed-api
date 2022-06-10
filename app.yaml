@@ -23,7 +23,7 @@ env_variables:
   APP_KEY: base64:Hxj+LufVkGR06aaMqhYFjlvCF6k+ikpKkvLWHput5mc=
   APP_NAME: "RECYCRAFT"
   LOG_LEVEL: debug
-  DB_DATABASE: recycraft
+  DB_DATABASE: recycraft_backend_api
   DB_USERNAME: root
   DB_PASSWORD: recycraft123
   DB_SOCKET: '/cloudsql/recycraft-c22-ps285:asia-southeast2:recycraft-backend'
