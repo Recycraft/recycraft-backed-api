@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "cviebrock/eloquent-sluggable": "^9.0",
+        "google/cloud": "^0.72",
         "google/cloud-build": "^0.3.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.11",
