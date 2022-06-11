@@ -22,7 +22,7 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
-      @if(session()->has('error'))
+      @if (session()->has('error'))
         {{ session('error') }}
       @endif
       <form action="{{ route('scrap.update', ['scrapCategory' => $scrap->slug]) }}" method="POST" enctype="multipart/form-data">

@@ -1,12 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HandicraftController;
 use App\Http\Controllers\ScrapCategoryController;
-use App\Http\Resources\ScrapCategoryResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +22,6 @@ Route::get('/', function () {
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
-    // Route::get('/', 'index');
     Route::get('/login', 'index')->name('login');
     Route::post('/login', 'login');
     Route::get('/register', 'registerIndex')->name('register');
