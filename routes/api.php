@@ -30,18 +30,18 @@ Route::middleware('auth:sanctum')->group(function () {
     
     Route::post('/handicraft/', [HandicraftController::class, 'storeApi']);
 
-    Route::controller(HandicraftController::class)->group(function () {
-        Route::get('/handicraft', 'getAll');
-        Route::get('/handicraft/{handicraft:slug}', 'getBySlug');
-    });
     
     Route::post('/category/', [ScrapCategoryController::class, 'storeApi']);
-    
-    Route::controller(ScrapCategoryController::class)->group(function () {
-        Route::get('/category', 'getAll');
-        Route::get('/category-with-handicrafts', 'getAllWithCrafts');
-        Route::get('/category/{scrapCategory:slug}', 'getById');
-    });
+});
+Route::controller(HandicraftController::class)->group(function () {
+    Route::get('/handicraft', 'getAll');
+    Route::get('/handicraft/{handicraft:slug}', 'getBySlug');
+});
+
+Route::controller(ScrapCategoryController::class)->group(function () {
+    Route::get('/category', 'getAll');
+    Route::get('/category-with-handicrafts', 'getAllWithCrafts');
+    Route::get('/category/{scrapCategory:slug}', 'getById');
 });
 
 
