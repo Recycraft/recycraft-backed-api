@@ -22,7 +22,7 @@ Route::get('/', function () {
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
-    Route::get('/login', 'index');
+    Route::get('/login', 'index')->name('login');
     Route::post('/login', 'login');
     Route::get('/register', 'registerIndex')->name('register');
     Route::post('/register', 'register');
