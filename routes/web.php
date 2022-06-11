@@ -18,14 +18,13 @@ use App\Http\Controllers\ScrapCategoryController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return redirect()->secure_url('/login');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
-    // Route::get('/', 'index');
     Route::get('/login', 'index');
     Route::post('/login', 'login');
-    Route::get('/register', 'registerIndex');
+    Route::get('/register', 'registerIndex')->name('register');
     Route::post('/register', 'register');
 });
 
