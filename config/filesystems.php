@@ -58,7 +58,7 @@ return [
 
         'gcs' => [
             'driver' => 'gcs',
-            'key_file_path' => env('GOOGLE_CLOUD_KEY_FILE', null), // optional: /path/to/service-account.json
+            'key_file_path' => env('GOOGLE_CLOUD_KEY_FILE', __DIR__.'/../credentials.json'), // optional: /path/to/service-account.json
             'key_file' => [], // optional: Array of data that substitutes the .json file (see below)
             'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'your-project-id'), // optional: is included in key file
             'bucket' => env('GOOGLE_CLOUD_STORAGE_BUCKET', 'your-bucket'),
