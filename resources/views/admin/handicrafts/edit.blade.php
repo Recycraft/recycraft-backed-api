@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ secure_url('handicraft.index') }}">Handicrafts</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Dashboard</a></li>Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/handicraft') }}">Handicrafts</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -24,12 +24,14 @@
     <section class="content">
       <div class="card card-dark">
         <div class="card-body">
-          <form action="{{ secure_url('handicraft.update', ['handicraft' => $handicraft->slug]) }}" method="POST" enctype="multipart/form-data">
+          <form action="{{ secure_url('/admin/handicraft/{handicraft:slug}', ['handicraft' => $handicraft->slug]) }}"
+            method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" id="title" name="title" class="form-control" value="{{ old('title', $handicraft->title) }}">
+              <input type="text" id="title" name="title" class="form-control"
+                value="{{ old('title', $handicraft->title) }}">
             </div>
             @error('title')
               <div class="error invalid-feedback">
@@ -38,7 +40,8 @@
             @enderror
             <div class="form-group">
               <label for="slug">Slug</label>
-              <input type="text" id="slug" name="slug" class="form-control" value="{{ old('slug', $handicraft->slug) }}">
+              <input type="text" id="slug" name="slug" class="form-control"
+                value="{{ old('slug', $handicraft->slug) }}">
             </div>
             @error('slug')
               <div class="error invalid-feedback">
@@ -48,7 +51,8 @@
             <div class="form-group">
               <label for="inputStatus">Category</label>
               <select id="inputStatus" name="scrap_category_id" class="form-control custom-select">
-                <option selected value="{{ $handicraft->scrap_category->id }}">{{ $handicraft->scrap_category->name }}</option>
+                <option selected value="{{ $handicraft->scrap_category->id }}">
+                  {{ $handicraft->scrap_category->name }}</option>
                 @foreach ($categories as $type)
                   <option value="{{ $type->id }}">{{ $type->name }}</option>
                 @endforeach
@@ -68,11 +72,11 @@
                 </div>
               </div>
               @if ($handicraft->image)
-                  <img src="{{ asset('storage/' . $handicraft->image) }}" alt=""
-                    class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
-                @else
-                  <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
-                @endif
+                <img src="{{ asset('storage/' . $handicraft->image) }}" alt=""
+                  class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
+              @else
+                <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">
+              @endif
               <img src="" alt="" class="img-preview img-fluid mt-2 col-6 col-sm-4 col-lg-2">
             </div>
             @error('image')

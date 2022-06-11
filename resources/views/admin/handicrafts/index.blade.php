@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -28,7 +28,7 @@
           <div class="card-header">
             <h3 class="card-title">Handicrafts</h3>
             <div class="card-tools">
-              <a href="{{ secure_url('handicraft.create') }}" class="btn bg-teal">Add new</a>
+              <a href="{{ secure_url('/admin/handicraft/create') }}" class="btn bg-teal">Add new</a>
             </div>
           </div>
           <div class="card-body p-0">
@@ -49,12 +49,12 @@
                     <td>{{ $handicraft->scrap_category->name }}</td>
                     <td>
                       <div class="d-flex justify-content-around align-items-center">
-                        <a href="{{ secure_url('handicraft.show', ['handicraft' => $handicraft->slug]) }}"
+                        <a href="{{ secure_url('/admin/handicraft/{handicraft:slug}', ['handicraft' => $handicraft->slug]) }}"
                           class="btn bg-info"><i class="fas fa-info-circle"></i></a>
-                        <a href="{{ secure_url('handicraft.edit', ['handicraft' => $handicraft->slug]) }}"
+                        <a href="{{ secure_url('/admin/handicraft/{handicraft:slug}/edit', ['handicraft' => $handicraft->slug]) }}"
                           class="btn bg-warning"><i class="fas fa-edit"></i></a>
                         <form method="post"
-                          action="{{ secure_url('handicraft.destroy', ['handicraft' => $handicraft->slug]) }}">
+                          action="{{ secure_url('/admin/handicraft/{handicraft:slug}', ['handicraft' => $handicraft->slug]) }}">
                           @csrf @method('delete')
                           <button type="submit" class="btn bg-danger" onclick="return confirm('Are you sure?')"><i
                               class="fas fa-trash"></i></button>

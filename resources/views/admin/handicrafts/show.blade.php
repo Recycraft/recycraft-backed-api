@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ secure_url('handicraft.index') }}">Handicraft</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/handicraft') }}">Handicraft</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -29,7 +29,7 @@
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">{{ $handicraft->title }}</h3>
               <div class="col-12">
-                <img src="{{ asset('storage/'.$handicraft->image) }}" class="product-image" alt="Product Image">
+                <img src="{{ asset('storage/' . $handicraft->image) }}" class="product-image" alt="Product Image">
               </div>
             </div>
             <div class="col-12 col-sm-6">

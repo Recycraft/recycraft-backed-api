@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ secure_url('scrap.index') }}">Scrap Categories</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/scrap') }}">Scrap Categories</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -22,11 +22,11 @@
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
-      @if(session()->has('error'))
+      @if (session()->has('error'))
         {{ session('error') }}
       @endif
-      <form action="{{ secure_url('scrap.store') }}" method="POST">
-      @csrf
+      <form action="{{ secure_url('/admin/scrap') }}" method="POST">
+        @csrf
         <div class="card card-dark">
           <div class="card-body">
             <div class="form-group">
