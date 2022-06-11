@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('scrap.index') }}">Scrap Categories</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('scrap.index') }}">Scrap Categories</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -29,7 +29,7 @@
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">{{ $scrap->name }}</h3>
               <div class="col-12">
-                <img src="{{ asset('storage/'.$scrap->image) }}" class="product-image" alt="Product Image">
+                <img src="{{ secure_asset('storage/'.$scrap->image) }}" class="product-image" alt="Product Image">
               </div>
             </div>
             <div class="col-12 col-sm-6">
@@ -43,7 +43,7 @@
           </div>
           <h4>Description</h4>
           <p>{!! $scrap->desc !!}</p>
-          <a href="{{ route('scrap.index') }}" class="btn bg-teal">Back</a>
+          <a href="{{ secure_url('scrap.index') }}" class="btn bg-teal">Back</a>
         </div>
         <!-- /.card-body -->
       </div>
