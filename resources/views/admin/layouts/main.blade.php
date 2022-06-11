@@ -22,12 +22,6 @@
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
 
-    <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__wobble brand-image img-circle elevation-3" src="{{ secure_asset('dist/img/recycraft.jpg') }}"
-        alt="AdminLTELogo" height="60" width="60">
-    </div>
-
     @include('admin.partials.navbar')
 
     @include('admin.partials.sidebar')
