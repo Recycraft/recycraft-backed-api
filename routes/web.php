@@ -18,7 +18,7 @@ use App\Http\Controllers\ScrapCategoryController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('/login');
+    return redirect()->route('login');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
