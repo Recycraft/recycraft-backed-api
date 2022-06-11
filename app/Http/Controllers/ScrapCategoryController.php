@@ -190,9 +190,12 @@ class ScrapCategoryController extends Controller
 
         $request->validate($rules);
 
+        cekImageSummernote($scrapCategory->desc, $request->desc);
+
         $data = [
             'name' => $request->name,
             'type' => $request->type,
+            'desc' => processSummernote($request->desc),
         ];
 
         if ($request->slug != $scrapCategory->slug){
@@ -206,9 +209,6 @@ class ScrapCategoryController extends Controller
             $new_image = $request->file('image')->store('images/scrap-categories');
             $data['image'] = $new_image;
         }
-
-        $desc = processSummernote($request->desc);
-        $data['desc'] = $desc;
 
         if (ScrapCategory::where('id', $scrapCategory->id)->update($data)){
             return redirect()->route('scrap.index')->with('success', 'Data has been updated');
