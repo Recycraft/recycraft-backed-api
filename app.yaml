@@ -22,7 +22,7 @@ env_variables:
   APP_ENV: development
   APP_KEY: base64:Hxj+LufVkGR06aaMqhYFjlvCF6k+ikpKkvLWHput5mc=
   APP_NAME: "RECYCRAFT"
-  APP_URL: https://127.0.0.1:8000
+  APP_URL: https://127.0.0.1
   LOG_LEVEL: debug
   DB_CONNECTION: recycraft-c22-ps285:asia-southeast2:recycraft-backend
   DB_DATABASE: recycraft
