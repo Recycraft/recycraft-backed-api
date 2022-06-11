@@ -100,6 +100,6 @@ if (!function_exists('cekImageSummernote')){
 if (!function_exists('getImageUrl')) {
   function getImageUrl($path){
     $disk = Storage::disk('gcs');
-    dd($disk->url($path));
+    return $disk->url($path);
   }
 }
