@@ -20,7 +20,7 @@ use App\Http\Resources\ScrapCategoryResource;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return secure_url('login');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
