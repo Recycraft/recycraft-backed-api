@@ -41,6 +41,7 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
+            'device_name' => 'required',
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -98,10 +99,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if ($request->user()->level == UserLevel::User){
-                return redirect()->secure_url('/user/dashboard');
+                return redirect()->route('user.dashboard');
             }
 
-            return redirect()->secure_url('/admin/dashboard');
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors([
@@ -127,7 +128,7 @@ class AuthController extends Controller
         ];
 
         if (User::create($data)) {
-            return redirect()->secure_url('login');
+            return redirect()->route('login');
         } else {
             return back()->withErrors([
                 'msg' => 'Gagal Register'
