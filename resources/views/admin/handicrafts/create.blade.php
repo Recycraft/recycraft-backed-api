@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('admin/dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ secure_url('admin/handicraft') }}">Handicrafts</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/handicraft') }}">Handicrafts</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -24,7 +24,7 @@
     <section class="content">
       <div class="card card-dark">
         <div class="card-body">
-          <form action="{{ secure_url('admin/handicraft/store') }}" , method="POST" enctype="multipart/form-data">
+          <form action="{{ secure_url('/admin/handicraft/store') }}" , method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
               <label for="title">Title</label>

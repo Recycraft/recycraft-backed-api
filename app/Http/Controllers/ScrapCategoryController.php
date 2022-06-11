@@ -130,7 +130,7 @@ class ScrapCategoryController extends Controller
         $data['desc'] = $desc;
 
         if (ScrapCategory::create($data)){
-            return redirect()->secure_url('admin/scrap')->with('success', 'Upload berhasil');
+            return redirect()->secure_url('/admin/scrap')->with('success', 'Upload berhasil');
         } else {
             return back()->withInput()->with('error', 'Cannot Store in Database');
         }
@@ -211,7 +211,7 @@ class ScrapCategoryController extends Controller
         }
 
         if (ScrapCategory::where('id', $scrapCategory->id)->update($data)){
-            return redirect()->secure_url('admin/scrap')->with('success', 'Data has been updated');
+            return redirect()->secure_url('/admin/scrap')->with('success', 'Data has been updated');
         } else {
             return back()->withInput()->with('error', 'Cannot Update');
         }
@@ -230,7 +230,7 @@ class ScrapCategoryController extends Controller
             Storage::delete($scrapCategory->image);
         }
         $scrapCategory->delete();
-        return redirect()->secure_url('admin/scrap')->with('success', 'Scrap has been deleted successfully!');
+        return redirect()->secure_url('/admin/scrap')->with('success', 'Scrap has been deleted successfully!');
     }
 
     public function checkSlug(Request $request) {

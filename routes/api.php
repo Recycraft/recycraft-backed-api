@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HandicraftController;
@@ -27,10 +26,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/user/profile', 'getProfile');
         Route::post('/logout', 'logOutApi');
     });
-    
+
     Route::post('/handicraft/', [HandicraftController::class, 'storeApi']);
 
-    
+
     Route::post('/category/', [ScrapCategoryController::class, 'storeApi']);
 });
 Route::controller(HandicraftController::class)->group(function () {

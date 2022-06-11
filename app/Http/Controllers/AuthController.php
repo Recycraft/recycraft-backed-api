@@ -41,7 +41,6 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'device_name' => 'required',
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -99,10 +98,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if ($request->user()->level == UserLevel::User){
-                return redirect()->secure_url('user/dashboard');
+                return redirect()->secure_url('/user/dashboard');
             }
 
-            return redirect()->secure_url('admin/dashboard');
+            return redirect()->secure_url('/admin/dashboard');
         }
 
         return back()->withErrors([

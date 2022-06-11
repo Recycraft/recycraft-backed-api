@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('admin/dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ secure_url('admin/scrap') }}">Scrap Categories</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/scrap') }}">Scrap Categories</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -43,7 +43,7 @@
           </div>
           <h4>Description</h4>
           <p>{!! $scrap->desc !!}</p>
-          <a href="{{ secure_url('admin/scrap') }}" class="btn bg-teal">Back</a>
+          <a href="{{ secure_url('/admin/scrap') }}" class="btn bg-teal">Back</a>
         </div>
         <!-- /.card-body -->
       </div>

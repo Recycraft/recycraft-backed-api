@@ -11,8 +11,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('admin/dashboard') }}">Home</a></li>
-              <li class="breadcrumb-item"><a href="{{ secure_url('admin/scrap') }}">Scrap Categories</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/scrap') }}">Scrap Categories</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -25,7 +25,7 @@
       @if (session()->has('error'))
         {{ session('error') }}
       @endif
-      <form action="{{ secure_url('admin/scrap') }}" method="POST">
+      <form action="{{ secure_url('/admin/scrap') }}" method="POST">
         @csrf
         <div class="card card-dark">
           <div class="card-body">

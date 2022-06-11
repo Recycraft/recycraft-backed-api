@@ -32,7 +32,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/dashboard', 'index');
         Route::get('/admin/setting', 'setting');
-
         #Users
         Route::get('/admin/users', 'index');
 
@@ -49,7 +48,6 @@ Route::middleware(['admin', 'auth'])->group(function () {
         Route::get('/admin/scrap/{scrapCategory:slug}/edit', 'edit');
         Route::delete('/admin/scrap/{scrapCategory:slug}', 'destroy');
     });
-
 
     #Handicrafts
     Route::controller(HandicraftController::class)->group(function () {
