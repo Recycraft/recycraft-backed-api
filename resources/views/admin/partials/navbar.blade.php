@@ -6,14 +6,14 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="{{ secure_url('/admin/dashboard') }}" class="nav-link">Home</a>
+      <a href="{{ secure_url('admin/dashboard') }}" class="nav-link">Home</a>
     </li>
   </ul>
 
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <li class="nav-item">
-      <a class="nav-link" href="{{ secure_url('/admin/setting') }}" role="button">
+      <a class="nav-link" href="{{ secure_url('admin/setting') }}" role="button">
         <i class="fas fa-user-cog"></i>
       </a>
     </li>

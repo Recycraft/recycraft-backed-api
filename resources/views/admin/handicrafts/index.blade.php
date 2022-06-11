@@ -11,7 +11,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ secure_url('/admin/dashboard') }}">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ secure_url('admin/dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">{{ $title }}</li>
             </ol>
           </div><!-- /.col -->
@@ -28,7 +28,7 @@
           <div class="card-header">
             <h3 class="card-title">Handicrafts</h3>
             <div class="card-tools">
-              <a href="{{ secure_url('/admin/handicraft/create') }}" class="btn bg-teal">Add new</a>
+              <a href="{{ secure_url('admin/handicraft/create') }}" class="btn bg-teal">Add new</a>
             </div>
           </div>
           <div class="card-body p-0">
