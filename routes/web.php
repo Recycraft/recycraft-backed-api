@@ -18,7 +18,7 @@ use App\Http\Controllers\ScrapCategoryController;
 */
 
 Route::get('/', function () {
-    return redirect()->secure_url('login');
+    return redirect()->route('login');
 });
 
 Route::controller(AuthController::class)->middleware('guest')->group(function () {
@@ -29,6 +29,7 @@ Route::controller(AuthController::class)->middleware('guest')->group(function ()
 });
 
 Route::middleware(['admin', 'auth'])->group(function () {
+    Route::post('/admin/logout', [AuthController::class, 'logout'])->name('logout');
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/dashboard', 'index')->name('dashboard');
         Route::get('/admin/setting', 'setting')->name('setting');

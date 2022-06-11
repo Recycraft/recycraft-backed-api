@@ -18,7 +18,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <form action="{{ route('/logout') }}" method="post">
+      <form action="{{ route('logout') }}" method="post">
         <button type="submit" class="nav-link btn border-0 btn-dark">
           <i class="fas fa-sign-out-alt"></i>
         </button>
