@@ -24,7 +24,6 @@ env_variables:
   APP_NAME: "RECYCRAFT"
   APP_URL: https://recycraft-backend-api-aysiqsilbq-et.a.run.app
   LOG_LEVEL: debug
-  DB_CONNECTION: recycraft-c22-ps285:asia-southeast2:recycraft-backend
   DB_DATABASE: recycraft
   DB_USERNAME: root
   DB_PASSWORD: recycraft123
