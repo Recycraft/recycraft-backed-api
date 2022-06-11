@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-teal elevation-4">
   <!-- Brand Logo -->
-  <a href="{{ route('admin/dashboard') }}" class="brand-link">
+  <a href="{{ route('dashboard') }}" class="brand-link">
     <img src="{{ secure_asset('/dist/img/recycraft.jpg') }}" alt="Logo" class="brand-image img-circle elevation-3">
     <span class="brand-text font-weight-bold">Recycraft</span>
   </a>
