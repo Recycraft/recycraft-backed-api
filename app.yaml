@@ -28,6 +28,7 @@ env_variables:
   GOOGLE_CLOUD_KEY_FILE: ./credentials.json
   GOOGLE_CLOUD_PROJECT_ID: recycraft-c22-ps285
   GOOGLE_CLOUD_STORAGE_BUCKET: recycraft-c22-ps285.appspot.com
+  GOOGLE_CLOUD_STORAGE_PATH_PREFIX: /uploads
   DB_CONNECTION: mysql
   DB_DATABASE: recycraft
   DB_USERNAME: recycraft_db
