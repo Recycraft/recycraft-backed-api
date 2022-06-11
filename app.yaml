@@ -30,5 +30,5 @@ env_variables:
   DB_PASSWORD: recycraft123
   DB_SOCKET: '/cloudsql/recycraft-c22-ps285:asia-southeast2:recycraft-backend'
 
-# beta_settings:
-#   cloud_sql_instances: 'recycraft-c22-ps285:asia-southeast2:recycraft-backend'
+beta_settings:
+  cloud_sql_instances: 'recycraft-c22-ps285:asia-southeast2:recycraft-backend'
