@@ -19,7 +19,7 @@ resources:
 env_variables:
   # Put production environment variables here.
   APP_DEBUG: true
-  APP_ENV: development
+  APP_ENV: local
   APP_KEY: base64:Hxj+LufVkGR06aaMqhYFjlvCF6k+ikpKkvLWHput5mc=
   APP_NAME: "RECYCRAFT"
   APP_URL: https://recycraft-backend-api-aysiqsilbq-et.a.run.app
