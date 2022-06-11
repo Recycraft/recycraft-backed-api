@@ -29,7 +29,7 @@
             <div class="col-12 col-sm-6">
               <h3 class="d-inline-block d-sm-none">{{ $handicraft->title }}</h3>
               <div class="col-12">
-                <img src="{{ asset('storage/' . $handicraft->image) }}" class="product-image" alt="Product Image">
+                <img src="{{ getImageUrl($handicraft->image) }}" class="product-image" alt="Product Image">
               </div>
             </div>
             <div class="col-12 col-sm-6">

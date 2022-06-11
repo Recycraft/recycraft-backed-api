@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class HandicraftResource extends JsonResource
@@ -19,7 +20,7 @@ class HandicraftResource extends JsonResource
             'slug' => $this->slug,
             'scrap_category' => new ScrapCategoryResource($this->scrap_category),
             'title' => $this->title,
-            'image' => $this->image,
+            'image' => Storage::url($this->image),
             'desc' => $this->desc,
             'materials' => $this->materials,
             'process' => $this->process,

@@ -71,7 +71,7 @@
                 </div>
               </div>
               @if ($handicraft->image)
-                <img src="{{ asset('storage/' . $handicraft->image) }}" alt=""
+                <img src="{{ getImageUrl($handicraft->image) }}" alt=""
                   class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
               @else
                 <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">

@@ -68,7 +68,7 @@
                 </div>
               </div>
               @if ($scrap->image)
-                <img src="{{ asset('storage/' . $scrap->image) }}" alt=""
+                <img src="{{ getImageUrl($scrap->image) }}" alt=""
                   class="img-preview img-fluid mb-3 col-6 col-sm-4 col-lg-2">
               @else
                 <img src="" alt="" class="img-preview img-fluid mb-3 col-8 col-sm-4">

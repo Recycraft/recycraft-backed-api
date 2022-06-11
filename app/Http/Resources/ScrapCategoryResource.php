@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ScrapCategoryResource extends JsonResource
 {
@@ -19,7 +20,7 @@ class ScrapCategoryResource extends JsonResource
             'name' => $this->name,
             'slug' => $this->slug,
             'type' => $this->type,
-            'image' => $this->image,
+            'image' => Storage::url($this->image),
             'desc' => $this->desc,
             'handicrafts' => HandicraftResource::collection($this->whenLoaded('posts'))
         ];

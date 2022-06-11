@@ -51,7 +51,7 @@ if (!function_exists('summernoteDeleteImage')){
 
     foreach($imageFile as $item => $image){
         $data = $image->getAttribute('src');
-        $imageName = str_replace(url('/storage'), '', $data);
+        $imageName = str_replace('https://storage.googleapis.com/recycraft-c22-ps285.appspot.com/upload', '', $data);
         $imageName = substr($imageName, 1);
         Storage::delete($imageName);
     }
@@ -69,7 +69,7 @@ if (!function_exists('cekImageSummernote')){
     foreach($image_file_original as $item => $image){
       $data = $image->getAttribute('src');
       if (!strpos($data, 'base64')){
-        $image_name = str_replace(url('/storage'), '', $data);
+        $image_name = str_replace('https://storage.googleapis.com/recycraft-c22-ps285.appspot.com/upload', '', $data);
         $image_name = substr($image_name, 1);
         $links_original->push($image_name);
       }
@@ -84,7 +84,7 @@ if (!function_exists('cekImageSummernote')){
     foreach($image_file_new as $item => $image){
       $data = $image->getAttribute('src');
       if (!strpos($data, 'base64')){
-        $image_name = str_replace(url('/storage'), '', $data);
+        $image_name = str_replace('https://storage.googleapis.com/recycraft-c22-ps285.appspot.com/upload', '', $data);
         $image_name = substr($image_name, 1);
         $links_new->push($image_name);
       }
@@ -94,5 +94,11 @@ if (!function_exists('cekImageSummernote')){
     foreach ($diff as $deleted_img) {
       Storage::delete($deleted_img);
     }
+  }
+}
+
+if (!function_exists('getImageUrl')) {
+  function getImageUrl($path){
+    return Storage::url($path);
   }
 }
