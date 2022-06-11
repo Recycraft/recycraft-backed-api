@@ -27,7 +27,7 @@ if (! function_exists('processSummernote')) {
         $imageToSave = str_replace(' ', '+', $imageToSave); 
         $imageName = $folderPath . uniqid() . '.'.$extension;
 
-        Storage::disk('public')->put($imageName, base64_decode($imageToSave));
+        Storage::disk('gsc')->put($imageName, base64_decode($imageToSave));
         $path = Storage::url($imageName);
 
         $image->removeAttribute('src');

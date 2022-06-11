@@ -185,7 +185,7 @@ class ScrapCategoryController extends Controller
         }
 
         if ($request->slug != $scrapCategory->slug){
-            $rules = 'required|unique:scrap_categories';
+            $rules['slug'] = 'required|unique:scrap_categories';
         }
 
         $request->validate($rules);
