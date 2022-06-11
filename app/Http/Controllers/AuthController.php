@@ -28,7 +28,7 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('New User')->plainTextToken;
-        
+
         return response([
             'message' => 'Registered Succesfully',
             'user' => $user,
@@ -43,14 +43,14 @@ class AuthController extends Controller
             'password' => 'required',
             'device_name' => 'required',
         ]);
-     
+
         $user = User::where('email', $request->email)->first();
-     
+
         if (! $user || ! Hash::check($request->password, $user->password)) {
             $response = ['message' => 'Bad credentials.',];
             return response($response, 401);
         }
-        
+
         $token = $user->createToken($request->device_name)->plainTextToken;
         $data = [
             'user' => $user,
@@ -64,7 +64,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response(
-            ['message' => 'Logged Out.'], 
+            ['message' => 'Logged Out.'],
             200
         );
     }
@@ -94,17 +94,17 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
- 
+
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
             if ($request->user()->level == UserLevel::User){
-                return redirect()->route('user.dashboard');
+                return redirect()->secure_url('user/dashboard');
             }
 
-            return redirect()->route('dashboard');
+            return redirect()->secure_url('admin/dashboard');
         }
- 
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
@@ -128,7 +128,7 @@ class AuthController extends Controller
         ];
 
         if (User::create($data)) {
-            return redirect()->route('login');
+            return redirect()->secure_url('login');
         } else {
             return back()->withErrors([
                 'msg' => 'Gagal Register'

@@ -131,7 +131,7 @@ class HandicraftController extends Controller
         $data['process'] = $process;
 
         if (Handicraft::create($data)){
-            return redirect()->route('handicraft.index')->with('success', 'Upload berhasil');
+            return redirect()->secure_url('admin/handicraft')->with('success', 'Upload berhasil');
         } else {
             return back()->withInput()->with('error', 'Cannot Store in Database');
         }
@@ -215,7 +215,7 @@ class HandicraftController extends Controller
         }
 
         if (Handicraft::where('id', $handicraft->id)->update($data)){
-            return redirect()->route('handicraft.index')->with('success', "Handicraft has been updated");
+            return redirect()->secure_url('admin/handicraft')->with('success', "Handicraft has been updated");
         } else {
             return back()->withInput()->with('error', "Update Failed");
         }
@@ -236,7 +236,7 @@ class HandicraftController extends Controller
             Storage::delete($handicraft->image);
         }
         $handicraft->delete();
-        return redirect()->route('handicraft.index')->with('success', 'Handicraft has been deleted successfully!');
+        return redirect()->secure_url('admin/handicraft')->with('success', 'Handicraft has been deleted successfully!');
     }
 
     public function checkSlug(Request $request) {
