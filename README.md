@@ -196,6 +196,26 @@ This will return all the scrap categories all well as the handicrafts for each c
 - Method  
   GET  
 - Response 
+  {
+    "data": [
+        {
+            "id": 1,
+            "name": "Plastik",
+            "slug": "plastic",
+            "type": "recycleable",
+            "image": "https://storage.googleapis.com/recycraft-c22-ps285.appspot.com/uploads/images/scrap-categories/C284gvNc763qBqEFCHTC9DV4UfXvWdeCa1adktmX.jpg",
+            "desc": "<p class=\"MsoNormal\">Plastik merupakan polimer; rantai panjang atom yang mengikat\r\nsatu sama lain. Rantai ini membentuk banyak unit molekul berulang, atau\r\n\"monomer\". Plastik umumnya terdiri dari polimer karbon saja atau\r\ndengan oksigen, nitrogen, chlorine atau belerang di tulang belakang. (beberapa\r\nminat komersial juga berdasar silikon). Apakah kalian tahu bahwa plastik ini memerlukan waktu 50 - 100 tahun untuk terurai ? Oleh karena itu, manfaatkan plastik ini dengan bijak ya. Ayo temukan berbagai ide kerajinan yang bisa dibuat dengan&nbsp; plastik ini !<p></p><p></p></p>\n"
+        },
+        {
+            "id": 2,
+            "name": "Kertas",
+            "slug": "paper",
+            "type": "recycleable",
+            "image": "https://storage.googleapis.com/recycraft-c22-ps285.appspot.com/uploads/images/scrap-categories/Z5zvp9JOf4eWwOD6F7PwzMPp8f9VePuxpDGj2Krw.jpg",
+            "desc": "<p class=\"MsoNormal\">Kertas adalah bahan yang tipis yang dihasilkan dari kompresi\r\nserat yang berasal dari pulp. Serat yang digunakan biasanya adalah alami dan\r\nmengandung selulosa dan hemiselulosa. Kertas dikenal sebagai media utama untuk\r\nmenulis, mencetak serta melukis dan banyak kegunaan lain yang dapat dilakukan\r\ndengan kertas misalnya kertas pembersih (tissue) yang digunakan untuk hidangan,\r\nkebersihan ataupun keperluan toilet. Kertas ini akan terurai dalam waktu 2 &acirc;&#128;&#147; 5 bulan\r\nsaja sehingga kamu perlu memanfaatkan kertas dengan bijak ya. Kamu bisa membuat\r\nberbagai kerajina&nbsp; dari kertas di sini.<p></p></p>\n"
+        },
+    ]
+  }
 
 ### Get Scrap Categories by slug
 This will return scrap categories data from the slug that searched"
