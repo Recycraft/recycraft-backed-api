@@ -42,5 +42,3 @@ Route::controller(ScrapCategoryController::class)->group(function () {
     Route::get('/category-with-handicrafts', 'getAllWithCrafts');
     Route::get('/category/{scrapCategory:slug}', 'getById');
 });
-
-

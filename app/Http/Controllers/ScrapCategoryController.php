@@ -27,7 +27,7 @@ class ScrapCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAllWithCraft()
+    public function getAllWithCrafts()
     {
         return ScrapCategoryResource::collection(ScrapCategory::with('handicrafts')->get());
     }
