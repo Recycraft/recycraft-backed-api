@@ -196,6 +196,7 @@ This will return all the scrap categories all well as the handicrafts for each c
 - Method  
   GET  
 - Response 
+  ```json
   {
     "data": [
         {
@@ -216,6 +217,7 @@ This will return all the scrap categories all well as the handicrafts for each c
         },
     ]
   }
+  ```
 
 ### Get Scrap Categories by slug
 This will return scrap categories data from the slug that searched"
